@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrap Pos-Customer Form</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" href="assets/fonts/css/all.css">
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-utilities.css">
+    <link rel="stylesheet" href="assets/normalize.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg  bg-light border-bottom">
+    <div class="container-fluid">
+
+        <a class="navbar-brand " href="#" style="font-family: Algerian" >Jayawin Pos System</a>
+
+        <button aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-bs-target="#navbarContent" data-bs-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a aria-current="page" class="nav-link active" href="#">Item</a>
+                </li>
+                <li class="nav-item">
+                    <a aria-current="page" class="nav-link active" href="#" style="color: black">Customer</a>
+                </li>
+                <li class="nav-item">
+                    <a aria-current="page" class="nav-link active" href="#">Orders</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Others
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Discounts</a></li>
+                        <li><a class="dropdown-item" href="#">Careeres</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">About Us</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <form class="d-flex">
+        <button type="button" class="btn btn-outline-dark me-2"><i class="fas fa-user-plus"></i> Sign Up</button>
+        <button type="button" class="btn btn-outline-dark me-2 "><i class="fas fa-sign-in-alt"></i> Log Out</button>
+    </form>
+</nav>
+
+<div class="alert alert-dark" role="alert">
+    <i class="fas fa-users"></i> Customer
+</div>
+
+
+<section class="container-fluid bg-light ">
+    <div class="row">
+        <div class="col pb-4 pt-5">
+            <section class="container-fluid bg-gradient">
+                <div class="row bg-gradient "><h4>Save Customer</h4></div>
+                <div class="row bg-gradient">
+                    <form class="mt-4 mb-4 w-100" >
+                        <input class="form-control w-100 col-sm-5 " type="search" placeholder="Search" aria-label="Search">
+                    </form>
+                </div>
+                <div class="row bg-gradient">
+                    <div class="col-3 pb-5">
+                        <button type="button" class="btn bg-success  ">Search</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col-4 pt-0">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary me-sm-1 " data-bs-toggle="modal" data-bs-target="#newCustid" >
+                New Customer
+            </button>
+            <button type="button" class="btn btn-outline-primary me-mt-4" style="margin-top: 5px">
+                View All
+            </button>
+
+
+            <!-- New Cust -->
+            <div class="modal fade" id="newCustid" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                 aria-labelledby="custl" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="custl">New Customer</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h4>Customer ID</h4>
+                            <form class="d-flex mt-4 mb-4">
+                                <input class="form-control" type="text">
+                            </form>
+                            <h4>Customer Name</h4>
+                            <form class="d-flex mt-4 mb-4">
+                                <input class="form-control" type="text">
+                            </form>
+                            <h4>Customer Address</h4>
+                            <form class="d-flex mt-4 mb-4">
+                                <input class="form-control" type="text">
+                            </form>
+                            <h4>Customer Salary</h4>
+                            <form class="d-flex mt-4 mb-4">
+                                <input class="form-control" type="text">
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                            <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Clear</button>
+                            <button type="button" class="btn btn-danger" >Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row mb-2 ">
+        <div class="col-1 mb-3" ><button type="button" class="btn btn-primary ">Clear</button></div>
+        <div class="col-1 mb-3"><button type="button" class="btn btn-danger ">Delete</button></div>
+        <div class="col-1 mb-3"> <button type="button" class="btn btn-secondary ">Update</button></div>
+    </div>
+
+
+    <div class="row pb-5">
+        <table class="table">
+            <thead class="table-active">
+            <tr>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Telephone</th>
+                <th scope="col">Salary</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">Malitha</th>
+                <td>25</td>
+                <td>0709887654</td>
+                <td>60,000</td>
+            </tr>
+            <tr>
+                <th scope="row">Siripala</th>
+                <td>55</td>
+                <td>0789065432</td>
+                <td>90,000</td>
+            </tr>
+            <tr>
+                <th scope="row">Jinadasa</th>
+                <td>65</td>
+                <td>0754321890</td>
+                <td>55,000</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+</html>

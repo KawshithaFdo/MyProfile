@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyProfile</title>
+    <meta content="This is my first simple web page to show my portfolio" name="praveen Kawshitha">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <style>
+        body {
+            background-image: url("assets/images/back.png");
+        }
+        header > nav > ul {
+            position: fixed;
+            top: 0;
+            right: 45px;
+            color: black;
+            font-weight: bold;
+            font-family: "Times New Roman";
+        }
+        body > section {
+            border-bottom: 2px solid skyblue;
+            width: 1330px;
+            height: 700px;
+            top: 80px;
+            margin-top: 25px;
+            margin-left: 50px;
+        }
+        header > nav > ul > li {
+            list-style: none;
+            display: inline;
+            font-size: 30px;
+            color: black;
+            padding: 15px;
+        }
+        header > nav > ul > li > a {
+            color: #A33A3A;
+        }
+        header > nav > ul > li :hover{
+            color: red;
+            cursor: pointer;
+        }
+
+                /*Home*/
+        body > section:nth-child(2) {
+            display: flex;
+        }
+        body > section:nth-child(2) > section:nth-child(1) {
+            margin-top: 40px;
+        }
+        body > section:nth-child(2) > section:nth-child(1) > h3:nth-child(1) {
+            font-family: "Times New Roman";
+            font-size: 60px;
+            font-weight: bold;
+            margin-left: 124px;
+        }
+        body > section:nth-child(2) > section:nth-child(1) > h3:nth-child(2) {
+            font-family: "Consolas";
+            font-size: 50px;
+            font-weight: bold;
+            margin-left: 88px;
+        }
+        body > section:nth-child(2) > section:nth-child(1) > address {
+            font-size: 40px;
+            margin-left: -382px;
+            margin-top: 235px;
+        }
+        body > section:nth-child(2) > section:nth-child(2) {
+            margin-top: 90px;
+            margin-left: 230px;
+        }
+        body > section:nth-child(2) > section:nth-child(2) > div > nav {
+            margin-left: 65px;
+        }
+
+        /*About*/
+        body > section:nth-child(3) > section{
+            display: flex;
+        }
+        body > section:nth-child(3) > div {
+            height: 20px;
+            width: 700px;
+        }
+        body > section:nth-child(3) > div > h1 {
+            color:  darkcyan;
+            margin-left: 300px;
+            font-size: 45px;
+        }
+        body > section:nth-child(3) > section > section:nth-child(1) {
+            margin-top: 140px;
+            margin-left: 160px;
+        }
+        body > section:nth-child(3) > section > section:nth-child(1) > p {
+            font-size: 25px;
+            font-weight: bold;
+        }
+        body > section:nth-child(3) > section > section:nth-child(1) > pre {
+            margin-top: 30px;
+            margin-left: 70px;
+            font-size: 22px;
+        }
+        body > section:nth-child(3) > section > section:nth-child(2) {
+            margin-top: 170px;
+            margin-left: 150px;
+        }
+        body > section:nth-child(3) > section > section:nth-child(2) > h4 {
+            font-size: 30px;
+        }
+        body > section:nth-child(3) > section > section:nth-child(2) > section {
+            margin-left: 40px;
+        }
+        body > section:nth-child(3) > section > section:nth-child(2) > section > div {
+            font-size: 20px;
+        }
+        body > section:nth-child(3) > section > section:nth-child(2) > section > p {
+            margin-left: 70px;
+            font-size: 25px;
+        }
+        body > section:nth-child(3) > section > section:nth-child(2) > section > div:nth-child(1),div:nth-child(2) {
+            height: 40px;
+            width: 170px;
+            background-color: darkgrey;
+        }
+        body > section:nth-child(3) > section > section:nth-child(2) > section > div:nth-child(3) {
+            height: 70px;
+            width: 170px;
+            background-color: darkgrey;
+        }
+
+            /*Education*/
+        body > section:nth-child(4) > p {
+            font-size: 20px;
+        }
+        body > section:nth-child(4) > p:nth-child(10) {
+            margin-top: 390px;
+            margin-left: 130px;
+        }
+        body > section:nth-child(4) > p:nth-child(8) {
+            position: relative;
+            top: 290px;
+            margin-left: 370px;
+        }
+        body > section:nth-child(4) > p:nth-child(6) {
+            position: relative;
+            top: 180px;
+            margin-left: 573px;
+        }
+        body > section:nth-child(4) > p:nth-child(3) {
+            position: relative;
+            top: 70px;
+            margin-left: 760px;
+        }
+        body > section:nth-child(4) > div {
+            position: absolute;
+        }
+        body > section:nth-child(4) > div > h1 {
+            color:  darkcyan;
+            margin-left: 300px;
+            font-size: 45px;
+        }
+        body > section:nth-child(4) > div:nth-child(2) {
+            margin-top: 44px;
+            margin-left: 840px;
+        }
+        body > section:nth-child(4) > div:nth-child(4) {
+            margin-left: 716px;
+            margin-top: 71px;
+        }
+        body > section:nth-child(4) > div:nth-child(5) {
+            position: absolute;
+            margin-top: 164px;
+            margin-left: 350px;
+        }
+        body > section:nth-child(4) > div:nth-child(7) {
+            margin-left: 538px;
+            margin-top: 171px;
+        }
+        body > section:nth-child(4) > div:nth-child(9) {
+            margin-top: 272px;
+            margin-left: 316px;
+        }
+
+        /*Skills*/
+        body > section:nth-child(5) > div > h1 {
+            color:  darkcyan;
+            margin-left: 300px;
+            font-size: 45px;
+        }
+        body > section:nth-child(5) > section {
+            display: flex;
+            width: 1300px;
+            flex-wrap: wrap;
+            margin-left: 77px;
+        }
+        body > section:nth-child(5) > section > figure {
+            flex-basis: 30px;
+        }
+        body > section:nth-child(5) > section > figure > figcaption {
+            font-size: 30px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        body > section:nth-child(5) > section > figure:nth-child(7) > img {
+            margin-bottom: 26px;
+        }
+
+        /*Projects*/
+        body > section:nth-child(6) > div > h1 {
+            color:  darkcyan;
+            margin-left: 300px;
+            font-size: 45px;
+        }
+        body > section:nth-child(6) > section {
+            margin-left: 50px;
+        }
+        body > section:nth-child(6) > section > figure > figcaption {
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+        body > section:nth-child(6) > section > figure:nth-child(1) {
+            margin-top: 100px;
+        }
+        body > section:nth-child(6) > section > figure:nth-child(1) > figcaption {
+            margin-left: 100px;
+            cursor: pointer;
+        }
+        body > section:nth-child(6) > section > figure:nth-child(1) > img{
+            width: 440px;
+            height: 300px;
+        }
+        body > section:nth-child(6) > section > figure:nth-child(2) > img{
+            width: 440px;
+            height: 300px;
+            margin-left: 700px;
+        }
+        body > section:nth-child(6) > section > figure:nth-child(2) {
+            margin-top: -349px;
+        }
+        body > section:nth-child(6) > section > figure:nth-child(2) > figcaption {
+            margin-left: 800px;
+            cursor: pointer;
+        }
+        body > section:nth-child(6) > section > figure:nth-child(3) >img{
+            width: 440px;
+            height: 300px;
+        }
+        body > section:nth-child(6) > section > figure:nth-child(3) {
+            margin-top: -226px;
+            margin-left: 365px;
+        }
+        body > section:nth-child(6) > section > figure:nth-child(3) > figcaption {
+            margin-left: 80px;
+            cursor: pointer;
+        }
+        body > section:nth-child(6) > section > figure > figcaption > a {
+            color: black;
+        }
+
+        /*Assignments*/
+        body > section:nth-child(7) > div > h1 {
+            color:  darkcyan;
+            margin-left: 300px;
+            font-size: 45px;
+        }
+        body > section:nth-child(7) > section {
+            margin-left: 50px;
+        }
+        body > section:nth-child(7) > section > figure > figcaption {
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+        body > section:nth-child(7) > section > figure:nth-child(1) {
+            margin-top: 65px;
+        }
+        body > section:nth-child(7) > section > figure:nth-child(1) > figcaption {
+            margin-left: 100px;
+            cursor: pointer;
+        }
+        body > section:nth-child(7) > section > figure:nth-child(1) > img{
+            width: 350px;
+            height: 200px;
+        }
+        body > section:nth-child(7) > section > figure:nth-child(2) > img{
+            width: 350px;
+            height: 200px;
+        }
+        body > section:nth-child(7) > section > figure:nth-child(2) {
+            margin-top: 37px;
+        }
+        body > section:nth-child(7) > section > figure:nth-child(2) > figcaption {
+            margin-left: 55px;
+            cursor: pointer;
+        }
+        body > section:nth-child(7) > section > figure:nth-child(3) >img{
+            width: 350px;
+            height: 200px;
+        }
+        body > section:nth-child(7) > section > figure:nth-child(3) {
+            margin-top: -523px;
+            margin-left: 640px;
+        }
+        body > section:nth-child(7) > section > figure:nth-child(3) > figcaption {
+            margin-left: 80px;
+            cursor: pointer;
+        }
+        body > section:nth-child(7) > section > figure:nth-child(4) >img{
+            width: 350px;
+            height: 200px;
+        }
+        body > section:nth-child(7) > section > figure:nth-child(4) {
+            margin-top: 33px;
+            margin-left: 640px;
+        }
+        body > section:nth-child(7) > section > figure:nth-child(4) > figcaption {
+            margin-left: 80px;
+            cursor: pointer;
+        }
+        body > section:nth-child(7) > section > figure > figcaption > a {
+            color: black;
+        }
+
+
+    </style>
+</head>
+
+<body>
+<header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#sec01">About</a></li>
+            <li><a href="#sec02">Education</a></li>
+            <li><a href="#sec03">Skills</a></li>
+            <li><a href="#sec04">Projects</a></li>
+            <li><a href="#sec05">Assignments</a></li>
+
+        </ul>
+    </nav>
+
+</header>
+
+<!-- PAGE 1 (HOME)-->
+<section id="home">
+    <section>
+        <h3><b><i>Hello There.I am</i></b></h3>
+        <h3><b><i>Praveen Kawshitha</i></b></h3>
+
+        <address>
+            <pre>
+                    Full Stack Developer.
+                    Web Application Developer.
+                    Software Engineer.
+            </pre>
+        </address>
+    </section>
+
+    <section>
+        <div>
+            <img src="assets/images/img.jpeg" alt="" height="500">
+
+            <nav>
+
+                    <p><img src="assets/images/twitter.png" alt="" height="50">
+                    <img src="assets/images/linkedin.png" alt="" height="50">
+                    <img src="assets/images/github.png" alt="" height="50">
+                    <img src="assets/images/facebook-logo.png" alt="" height="50">
+                    <img src="assets/images/slack.png" alt="" height="50"></p>
+
+            </nav>
+        </div>
+    </section>
+</section>
+
+<!-- PAGE 2 (ABOUT)-->
+<section id="sec01">
+    <div><h1>About</h1></div>
+    <section>
+        <section>
+            <p>Need to talk.</p>
+            <p> Plz Contact me for more Details.</p>
+            <pre><img src="assets/images/user.png" alt="" height="30">     Praveen Kawshitha Fdo.</pre>
+            <pre><img src="assets/images/email.png" alt="" height="30">     praveenkawshika456@gmail.com</pre>
+            <pre><img src="assets/images/phone-call.png" alt="" height="30">     076-3785218.</pre>
+            <pre><img src="assets/images/location.png" alt="" height="30">     Godella,Dankotuwa.</pre>
+        </section>
+
+        <section>
+            <h4>Send Message.</h4>
+            <section>
+                <div><h4>Name</h4></div>
+                <div><h4>Contact</h4></div>
+                <div><h4>Message</h4></div>
+                <p>Send <img src="assets/images/send-message.png" alt="" width="15"></p>
+            </section>
+        </section>
+    </section>
+</section>
+
+<!-- PAGE 3 (EDUCATION) -->
+<section id="sec02">
+    <div>
+        <h1>Education</h1>
+    </div>
+    <div>
+        <img src="assets/images/ijse.jpg" alt="" width="200px">
+    </div>
+    <p>
+        GDSE in IJSE Campus(2020-2022)<br>Higher Education
+    </p>
+    <div>
+        <img src="assets/images/arrow.png" alt="" width="100px">
+    </div>
+    <div>
+        <img src="assets/images/sch.jpeg" alt="" width="200px">
+    </div>
+    <p>
+        St.Joseph Vaz College(2018-2020)<br>Advanced Level
+    </p>
+    <div>
+        <img src="assets/images/arrow.png" alt="" width="100px">
+    </div>
+    <p>
+        St.Joseph Vaz College(2013-2017)<br>Ordinary Level
+    </p>
+    <div>
+        <img src="assets/images/arrow.png" alt="" width="100px">
+    </div>
+    <p>
+        St.Joseph Vaz College(2007-2012)<br>Primary Education
+    </p>
+</section>
+
+<!-- PAGE 4 (SKILLS) -->
+<section id="sec03">
+    <div>
+        <h1>Skills</h1>
+    </div>
+    <section>
+            <figure>
+                <img src="assets/images/java.png" alt="" width="200">
+                <figcaption>Java</figcaption>
+            </figure>
+            <figure>
+                <img src="assets/images/java-script.png" alt="" width="200">
+                <figcaption>Java Script</figcaption>
+            </figure>
+            <figure>
+                <img src="assets/images/nodejs.png" alt="" width="200">
+                <figcaption>NodeJs</figcaption>
+            </figure>
+            <figure>
+                <img src="assets/images/mysql.png" alt="" width="200">
+                <figcaption>Mysql</figcaption>
+            </figure>
+            <figure>
+                <img src="assets/images/html.png" alt="" width="200">
+                <figcaption>Html 5</figcaption>
+            </figure>
+            <figure>
+                <img src="assets/images/php.png" alt="" width="200">
+                <figcaption>Php</figcaption>
+            </figure>
+            <figure>
+                <img src="assets/images/hibernate.png" alt="" width="200">
+                <figcaption>Hibernate</figcaption>
+            </figure>
+    </section>
+</section>
+
+<!-- PAGE 5 (PROJECTS) -->
+<section id="sec04">
+    <div>
+        <h1>Projects</h1>
+    </div>
+    <section>
+        <figure>
+            <img src="assets/images/hotel.png" alt="" width="400">
+            <figcaption><a href="https://github.com/KawshithaFdo/Hotel-Management-System.git" target="_blank">Hotel System</a></figcaption>
+        </figure>
+        <figure>
+            <img src="assets/images/market.png" alt="" width="400">
+            <figcaption> <a href="https://github.com/KawshithaFdo/POS-System-.git" target="_blank">Pos System</a></figcaption>
+        </figure>
+        <figure>
+            <img src="assets/images/garage.png" alt="" width="400">
+            <figcaption><a href="https://github.com/KawshithaFdo/Garage-Biling-System.git" target="_blank">Garage Billing System</a></figcaption>
+        </figure>
+    </section>
+</section>
+
+<!--PAGE 6 (ASSIGNMENTS)-->
+<section id="sec05">
+    <div>
+        <h1>Assignments</h1>
+    </div>
+    <section>
+        <figure>
+            <img src="assets/Assignments/Screenshot%20(44).png" alt="" width="400">
+            <figcaption><a href="https://github.com/KawshithaFdo/Css-Assignments.git" target="_blank">Css Positions</a></figcaption>
+        </figure>
+        <figure>
+            <img src="assets/Assignments/Screenshot%20(42).png" alt="" width="400">
+            <figcaption><a href="https://github.com/KawshithaFdo/Css-Assignments.git" target="_blank">Slider Animation</a></figcaption>
+        </figure>
+        <figure>
+            <img src="assets/Assignments/Screenshot%20(45).png" alt="" width="400">
+            <figcaption> <a href="https://github.com/KawshithaFdo/Css-Assignments.git" target="_blank">Responsive</a></figcaption>
+        </figure>
+        <figure>
+            <img src="assets/Assignments/Screenshot%20(46).png" alt="" width="400">
+            <figcaption><a href="https://github.com/KawshithaFdo/Css-Assignments.git" target="_blank">Transitions</a></figcaption>
+        </figure>
+    </section>
+
+</section>
+
+</body>
+
+</html>
+

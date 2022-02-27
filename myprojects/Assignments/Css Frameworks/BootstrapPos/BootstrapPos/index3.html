@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrap Pos-Order Form</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" href="assets/fonts/css/all.css">
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-utilities.css">
+    <link rel="stylesheet" href="assets/normalize.css">
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-collapse bg-light border-bottom">
+    <div class="container-fluid">
+
+        <a class="navbar-brand text-reset" href="#" style="font-family: Algerian" >Jayawin Pos System</a>
+
+        <button aria-controls="navbarSupportedcontent" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a aria-current="page" class="nav-link active" href="index2.html" >Item</a>
+                </li>
+                <li class="nav-item">
+                    <a aria-current="page" class="nav-link active" href="index.html">Customer</a>
+                </li>
+                <li class="nav-item">
+                    <a aria-current="page" class="nav-link active" href="#" style="color: black">Orders</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Others
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Discounts</a></li>
+                        <li><a class="dropdown-item" href="#">Careeres</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">About Us</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <form class="d-flex">
+        <button type="button" class="btn btn-outline-dark me-2"><i class="fas fa-user-plus"></i> Sign Up</button>
+        <button type="button" class="btn btn-outline-dark me-2 "><i class="fas fa-sign-in-alt"></i> Log Out</button>
+    </form>
+</nav>
+
+<div class="alert alert-dark" role="alert">
+    <i class="fas fa-shopping-bag"></i> Orders
+</div>
+
+
+<section class="container-fluid bg-light">
+
+    <section class="row">
+
+        <div class="col bg-gradient m-4 pb-4">
+
+
+            <section class="container">
+
+                <div class="row">
+                    <div class="bg-info mb-3 p-2"><h4>Bill Details</h4></div>
+                    <div class="col">
+                        <caption>Order ID:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+                    <div class="col">
+                        <caption>Order Date:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <caption>Customer:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+                    <div class="col">
+                        <caption>Customer_ID:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <caption>Name:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+                    <div class="col">
+                        <caption>Salary:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <caption>Address:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="col bg-gradient m-4 pb-4">
+
+            <section class="container">
+
+                <div class="row">
+                    <div class="bg-info mb-3 p-2"><h4>Item Details</h4></div>
+                    <div class="col">
+                        <caption>Item:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+                    <div class="col">
+                        <caption>Item Code:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <caption>Item Name:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+                    <div class="col">
+                        <caption>Item Price:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+                    <div class="col">
+                        <caption>QtyOnH:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <caption>Order QTY:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col">
+                        <button class="btn btn-success mt-4">Add Item</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <div class="col bg-gradient m-4 pb-4">
+            <h4 class="text-secondary">Total: 0Rs./=</h4>
+            <h4 class="text-secondary">Sub Total: 0Rs./=</h4>
+
+            <section class="container">
+
+                <div class="row">
+                    <div class="col">
+                        <caption>Payment:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+                    <div class="col">
+                        <caption>Discount:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div CLASS="col">
+                        <caption>Balance:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col">
+                        <button class="btn btn-success mt-4">Place Order</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+        <!--Table-->
+    <section class="row p-3 mb-5">
+        <div class="col">
+            <table class="table">
+                <thead class="bg-info">
+                <tr>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Contact</th>
+                    <th scope="col">Salary</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">Malitha</th>
+                    <td>25</td>
+                    <td>0709887654</td>
+                    <td>60,000</td>
+                </tr>
+                <tr>
+                    <th scope="row">Siripala</th>
+                    <td>55</td>
+                    <td>0789065432</td>
+                    <td>90,000</td>
+                </tr>
+                <tr>
+                    <th scope="row">Jinadasa</th>
+                    <td>65</td>
+                    <td>0754321890</td>
+                    <td>55,000</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+</section>
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

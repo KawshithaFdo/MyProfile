@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrap Pos-Customer Form</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" href="assets/fonts/css/all.css">
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-utilities.css">
+    <link rel="stylesheet" href="assets/normalize.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-gradient">
+    <div class="container-fluid">
+        <a class="navbar-brand text-danger" href="#">Jayawin Pos System</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a  id="home" class="nav-link" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a  id="item" class="nav-link" aria-current="page" href="#">Item</a>
+                </li>
+                <li class="nav-item">
+                    <a  id="customer" class="nav-link" href="#">Customer</a>
+                </li>
+                <li class="nav-item">
+                    <a id="order" class="nav-link" href="#">Orders</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Others
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Discounts</a></li>
+                        <li><a class="dropdown-item" href="#">Careers</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">About Us</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <form class="d-flex">
+        <button type="button" class="btn btn-outline-dark me-2"><i class="fas fa-user-plus"></i> Sign Up</button>
+        <button type="button" class="btn btn-outline-dark me-2 "><i class="fas fa-sign-in-alt"></i> Log Out</button>
+    </form>
+</nav>
+
+<!--DashBoard-->
+<div id="db" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="assets/images/image_01.jpg" class="d-block w-100" alt="..." style="height: 660px">
+        </div>
+        <div class="carousel-item">
+            <img src="assets/images/image_02.jpg" class="d-block w-100" alt="..." style="height: 660px">
+        </div>
+        <div class="carousel-item ">
+            <img src="assets/images/image_03.jpg" class="d-block w-100" alt="..." style="height: 660px">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<!--Customer-->
+<section id="cu" class="container-fluid bg-light ">
+    <div class="row">
+        <div class="col pb-4 pt-5">
+            <section class="container-fluid bg-gradient">
+                <div class="row bg-gradient "><h4>Save Customer</h4></div>
+                <div class="row bg-gradient">
+                    <form class="mt-4 mb-4 w-100" >
+                        <input class="form-control w-50 col-sm-5 " type="search" placeholder="Search" aria-label="Search">
+                    </form>
+                </div>
+                <div class="row bg-gradient">
+                    <div class="col-3 pb-5">
+                        <button type="button" class="btn bg-success  w-100 m-2">Search</button>
+                    </div>
+                    <div class="mb-1">
+                        <button type="button" class="btn btn-primary ">Clear</button>
+                        <button id="DeleteCustomer" type="button" class="btn btn-danger ">Delete</button>
+                        <button id="UpdateCustomer" type="button" class="btn btn-secondary ">Update</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col-6 pt-5">
+            <div class="mb-3">
+                <label class="form-label" for="txtCustId">Customer ID</label>
+                <input class="form-control w-50" id="txtCustId" placeholder="Customer ID" type="text">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="txtCustName">Customer Name</label>
+                <input class="form-control w-50" id="txtCustName" placeholder="Customer Name" type="text">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="txtCustAddress">Customer Address</label>
+                <input class="form-control w-50" id="txtCustAddress" placeholder="Customer Address" type="text">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="txtCustSalary">Customer Salary</label>
+                <input class="form-control w-50" id="txtCustSalary" placeholder="Customer Salary" type="text">
+            </div>
+            <div class="mb-3">
+                <button id="btnSaveOrUpdate" type="button" class="btn btn-primary" >Save</button>
+                <button id="clearCustomer" type="button" class="btn btn-outline-primary">Clear</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row pb-5">
+        <table class="table">
+            <thead class="table-active">
+            <tr>
+                <th scope="col">Customer ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Salary</th>
+            </tr>
+            </thead>
+            <tbody id="customerTable">
+
+            </tbody>
+        </table>
+    </div>
+</section>
+<!--Item-->
+<section id="it" class="container-fluid bg-light ">
+    <div class="row">
+        <div class="col pb-9 pt-2">
+            <section class="container-fluid bg-gradient pt-3">
+                <div class="row w-50 bg-gradient"><h4>Save Item</h4></div>
+                <div class="row bg-gradient">
+                    <form class="mt-4 mb-4 w-100" >
+                        <input class="form-control w-50" type="search" placeholder="Search" aria-label="Search">
+                    </form>
+                </div>
+                <div class="row bg-gradient">
+                    <div class="col-6 pb-5">
+                        <button type="button" class="btn bg-success w-100">Search</button>
+                    </div>
+                    <div class="mb-1">
+                        <button type="button" class="btn btn-primary ">Clear</button>
+                        <button type="button" class="btn btn-danger ">Delete</button>
+                        <button id="UpdateItem" type="button" class="btn btn-secondary ">Update</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col-6 pt-5">
+            <div class="mb-3">
+                <label class="form-label" for="txtItemId">Item ID</label>
+                <input class="form-control w-50" id="txtItemId" placeholder="Item ID" type="text">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="txtItemName">Item Name</label>
+                <input class="form-control w-50" id="txtItemName" placeholder="Item Name" type="text">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="txtItemPrice">Item Price</label>
+                <input class="form-control w-50" id="txtItemPrice" placeholder="Item Price" type="text">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="txtItemQty">Item Qty</label>
+                <input class="form-control w-50" id="txtItemQty" placeholder="Item Qty" type="text">
+            </div>
+            <div class="mb-3">
+                <button id="btnsaveItem" type="button" class="btn btn-primary" >Save</button>
+                <button id="clearItem" type="button" class="btn btn-outline-primary">Clear</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row pb-5">
+        <table class="table">
+            <thead class="table-active">
+            <tr>
+                <th scope="col">Item ID</th>
+                <th scope="col">Item Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Qty</th>
+            </tr>
+            </thead>
+            <tbody id="itemTable">
+
+            </tbody>
+        </table>
+    </div>
+</section>
+<!--Orders-->
+<section id="or"  class="container-fluid bg-light">
+
+    <section class="row">
+
+        <div class="col bg-gradient m-4 pb-4">
+
+
+            <section class="container">
+
+                <div class="row">
+                    <div class="bg-info mb-3 p-2"><h4>Bill Details</h4></div>
+                    <div class="col">
+                        <caption>Order ID:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+                    <div class="col">
+                        <caption>Order Date:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <caption>Customer:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+                    <div class="col">
+                        <caption>Customer_ID:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <caption>Name:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+                    <div class="col">
+                        <caption>Salary:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <caption>Address:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="col bg-gradient m-4 pb-4">
+
+            <section class="container">
+
+                <div class="row">
+                    <div class="bg-info mb-3 p-2"><h4>Item Details</h4></div>
+                    <div class="col">
+                        <caption>Item:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+                    <div class="col">
+                        <caption>Item Code:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <caption>Item Name:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+                    <div class="col">
+                        <caption>Item Price:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+                    <div class="col">
+                        <caption>QtyOnH:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <caption>Order QTY:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col">
+                        <button class="btn btn-success mt-4">Add Item</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <div class="col bg-gradient m-4 pb-4">
+            <h4 class="text-secondary">Total: 0Rs./=</h4>
+            <h4 class="text-secondary">Sub Total: 0Rs./=</h4>
+
+            <section class="container">
+
+                <div class="row">
+                    <div class="col">
+                        <caption>Payment:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+                    <div class="col">
+                        <caption>Discount:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div CLASS="col">
+                        <caption>Balance:</caption>
+                        <form>
+                            <input class="form-control " type="text">
+                        </form>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col">
+                        <button class="btn btn-success mt-4">Place Order</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <!--Table-->
+    <section class="row p-3 mb-5">
+        <div class="col">
+            <table class="table">
+                <thead class="bg-info">
+                <tr>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Contact</th>
+                    <th scope="col">Salary</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">Malitha</th>
+                    <td>25</td>
+                    <td>0709887654</td>
+                    <td>60,000</td>
+                </tr>
+                <tr>
+                    <th scope="row">Siripala</th>
+                    <td>55</td>
+                    <td>0789065432</td>
+                    <td>90,000</td>
+                </tr>
+                <tr>
+                    <th scope="row">Jinadasa</th>
+                    <td>65</td>
+                    <td>0754321890</td>
+                    <td>55,000</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+</section>
+
+<script src="assets/jQuery/jquery-3.6.0.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+
+<script>
+    $("#db").css("display","block");
+    $("#cu").css("display","none");
+    $("#it").css("display","none");
+    $("#or").css("display","none");
+
+    $("#customer").click(function (){
+        $("#cu").css("display","block");
+        $("#db").css("display","none");
+        $("#it").css("display","none");
+        $("#or").css("display","none");
+
+    });
+    $("#item").click(function (){
+        $("#it").css("display","block");
+        $("#cu").css("display","none");
+        $("#or").css("display","none");
+        $("#db").css("display","none");
+
+    });
+    $("#order").click(function (){
+        $("#or").css("display","block");
+        $("#it").css("display","none");
+        $("#cu").css("display","none");
+        $("#db").css("display","none");
+    });
+    $("#home").click(function (){
+        $("#db").css("display","block");
+        $("#it").css("display","none");
+        $("#cu").css("display","none");
+        $("#or").css("display","none");
+    });
+
+    //----------------Validate Customer-----------------------------------------------------------
+        $("#btnSaveOrUpdate").attr('disabled','disabled');
+
+            var idPattern = /^[C](-00)[0-9]{1,4}$/;
+            var namePattern =/^[A-z0-9 ]{3,}$/;
+            var addressPattern =/^[A-z0-9 ]{3,}$/;
+            var salaryPattern=/^[0-9]+$/;
+
+            $("#txtCustId").keyup(function (eventOb) {
+                if (idPattern.test($("#txtCustId").val())){
+                    $("#txtCustId").css("border","2px solid green");
+                    if (eventOb.key == "Enter") {
+                        $("#txtCustName").focus();
+
+                        $("#txtCustName").keyup(function (eventOb) {
+                            if (namePattern.test($("#txtCustName").val())){
+                                $("#txtCustName").css("border","2px solid green");
+                                if (eventOb.key == "Enter") {
+                                    $("#txtCustAddress").focus();
+
+                                    $("#txtCustAddress").keyup(function (eventOb) {
+                                        if (addressPattern.test($("#txtCustAddress").val())){
+                                            $("#txtCustAddress").css("border","2px solid green");
+                                            if (eventOb.key == "Enter") {
+                                                $("#txtCustSalary").focus();
+
+                                                $("#txtCustSalary").keyup(function (eventOb) {
+                                                    if (salaryPattern.test($("#txtCustSalary").val())){
+                                                        $("#txtCustSalary").css("border","2px solid green");
+                                                        $("#btnSaveOrUpdate").removeAttr('disabled');
+                                                        if (eventOb.key == "Enter") {
+                                                            $("#btnSaveOrUpdate").focus();
+                                                        }
+                                                    }else{
+                                                        $("#txtCustSalary").css("border","2px solid red");
+                                                        $("#btnSaveOrUpdate").attr('disabled','disabled');
+                                                    }
+                                                });
+
+                                            }
+                                        }else{
+                                            $("#txtCustAddress").css("border","2px solid red");
+                                            $("#btnSaveOrUpdate").attr('disabled','disabled');
+                                        }
+                                    });
+
+
+                                }
+                            }else{
+                                $("#txtCustName").css("border","2px solid red");
+                                $("#btnSaveOrUpdate").attr('disabled','disabled');
+                            }
+                        });
+
+
+                    }
+                }else{
+                    $("#txtCustId").css("border","2px solid red");
+                    $("#btnSaveOrUpdate").attr('disabled','disabled');
+                }
+            });
+
+    //---------------Add Customer(get Data in input fields)----------------------------------------
+        $("#btnSaveOrUpdate").click(function () {
+
+            $("#customerTable>tr").off("click");
+
+            let customerID = $("#txtCustId").val();
+            let customerName = $("#txtCustName").val();
+            let customerAddress = $("#txtCustAddress").val();
+            let customerSalary = $("#txtCustSalary").val();
+
+            let row = `<tr><td>${customerID}</td><td>${customerName}</td><td>${customerAddress}</td><td>${customerSalary}</td></tr>`;
+
+            $("#customerTable").append(row);
+
+            alert("Customer Added Successfully");
+            $("#btnSaveOrUpdate").attr('disabled','disabled');
+
+                $("#txtCustId").val(null);
+                $("#txtCustName").val(null);
+                $("#txtCustAddress").val(null);
+                $("#txtCustSalary").val(null);
+
+//-----------------------------Show Data in input fields------------------------------------------
+            $("#customerTable>tr").click(function () {
+                let cusID = $(this).children(":eq(0)").text();
+                let cusName = $(this).children(":eq(1)").text();
+                let cusAddress = $(this).children(":eq(2)").text();
+                let cusSalary = $(this).children(":eq(3)").text();
+
+                $("#txtCustId").val(cusID);
+                $("#txtCustName").val(cusName);
+                $("#txtCustAddress").val(cusAddress);
+                $("#txtCustSalary").val(cusSalary);
+
+            });
+
+        });
+    //----------------Clear Customer---------------------------------------------------------------
+        $("#clearCustomer").click(function () {
+            $("#txtCustId").val(null);
+            $("#txtCustName").val(null);
+            $("#txtCustAddress").val(null);
+            $("#txtCustSalary").val(null);
+    });
+
+    //---------------Update Customer--------------------------------------------------------------
+    $("#UpdateCustomer").click(function () {
+        let customerID = $("#txtCustId").val();
+        let customerName = $("#txtCustName").val();
+        let customerAddress = $("#txtCustAddress").val();
+        let customerSalary = $("#txtCustSalary").val();
+
+        let row = `<tr><td>${customerID}</td><td>${customerName}</td><td>${customerAddress}</td><td>${customerSalary}</td></tr>`;
+
+    });
+
+    //----------------Delete Customer------------------------------------------------------------
+
+    //----------------Validate Item---------------------------------------------------------------
+    $("#btnsaveItem").attr('disabled','disabled');
+
+    var idPattern = /^[C](-00)[0-9]{1,4}$/;
+    var namePattern =/^[A-z0-9 ]{3,}$/;
+    var qtyPattern =/^[0-9]{1,}$/;
+    var pricePattern=/^[1-9][0-9]*([.][0-9]{1,2})?$/;
+
+    $("#txtItemId").keyup(function (eventOb) {
+        if (idPattern.test($("#txtItemId").val())){
+            $("#txtItemId").css("border","2px solid green");
+            if (eventOb.key == "Enter") {
+                $("#txtItemName").focus();
+
+                $("#txtItemName").keyup(function (eventOb) {
+                    if (namePattern.test($("#txtItemName").val())){
+                        $("#txtItemName").css("border","2px solid green");
+                        if (eventOb.key == "Enter") {
+                            $("#txtItemPrice").focus();
+
+                            $("#txtItemPrice").keyup(function (eventOb) {
+                                if (pricePattern.test($("#txtItemPrice").val())){
+                                    $("#txtItemQty").css("border","2px solid green");
+                                    if (eventOb.key == "Enter") {
+                                        $("#txtItemQty").focus();
+
+                                        $("#txtItemQty").keyup(function (eventOb) {
+                                            if (qtyPattern.test($("#txtItemQty").val())){
+                                                $("#txtItemQty").css("border","2px solid green");
+                                                $("#btnsaveItem").removeAttr('disabled');
+                                                if (eventOb.key == "Enter") {
+                                                    $("#btnsaveItem").focus();
+                                                }
+                                            }else{
+                                                $("#txtItemQty").css("border","2px solid red");
+                                                $("#btnsaveItem").attr('disabled','disabled');
+                                            }
+                                        });
+
+                                    }
+                                }else{
+                                    $("#txtItemPrice").css("border","2px solid red");
+                                    $("#btnsaveItem").attr('disabled','disabled');
+                                }
+                            });
+
+
+                        }
+                    }else{
+                        $("#txtItemName").css("border","2px solid red");
+                        $("#btnsaveItem").attr('disabled','disabled');
+                    }
+                });
+
+
+            }
+        }else{
+            $("#txtItemId").css("border","2px solid red");
+            $("#btnsaveItem").attr('disabled','disabled');
+        }
+    });
+
+    //---------------Add Item----------------------------------------------------------------------
+        $("#btnsaveItem").click(function () {
+
+        $("#itemTable>tr").off("click");
+
+        let itemId = $("#txtItemId").val();
+        let itemName = $("#txtItemName").val();
+        let itemPrice = $("#txtItemPrice").val();
+        let itemQty = $("#txtItemQty").val();
+
+        let row = `<tr><td>${itemId}</td><td>${itemName}</td><td>${itemPrice}</td><td>${itemQty}</td></tr>`;
+        $("#itemTable").append(row);
+
+        alert("Item Added Successfully");
+        $("#btnsaveItem").attr('disabled','disabled');
+
+            $("#txtItemId").val(null);
+                $("#txtItemName").val(null);
+                $("#txtItemPrice").val(null);
+                $("#txtItemQty").val(null);
+
+            $("#itemTable>tr").click(function () {
+
+            let itemID = $(this).children(":eq(0)").text();
+            let itemName = $(this).children(":eq(1)").text();
+            let itemPrice = $(this).children(":eq(2)").text();
+            let itemQty = $(this).children(":eq(3)").text();
+
+            console.log(itemID, itemName, itemPrice, itemQty);
+
+            // set values for the input fields
+            $("#txtItemId").val(itemID);
+            $("#txtItemName").val(itemName);
+            $("#txtItemPrice").val(itemPrice);
+            $("#txtItemQty").val(itemQty);
+
+        });
+
+    });
+    //---------------Clear Item--------------------------------------------------------------------
+        $("#clearItem").click(function () {
+            $("#txtItemId").val(null);
+            $("#txtItemName").val(null);
+            $("#txtItemPrice").val(null);
+            $("#txtItemQty").val(null);
+
+    });
+</script>
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+</html>

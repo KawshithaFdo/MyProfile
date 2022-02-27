@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrap Pos-Item Form</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" href="assets/fonts/css/all.css">
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-utilities.css">
+    <link rel="stylesheet" href="assets/normalize.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-collapse bg-light border-bottom">
+    <div class="container-fluid">
+
+        <a class="navbar-brand text-reset" href="#" style="font-family: Algerian" >Jayawin Pos System</a>
+
+        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a aria-current="page" class="nav-link active" href="#" style="color: black">Item</a>
+                </li>
+                <li class="nav-item">
+                    <a aria-current="page" class="nav-link active" href="index.html">Customer</a>
+                </li>
+                <li class="nav-item">
+                    <a aria-current="page" class="nav-link active" href="index3.html">Orders</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Others
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Discounts</a></li>
+                        <li><a class="dropdown-item" href="#">Careeres</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">About Us</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <form class="d-flex">
+        <button type="button" class="btn btn-outline-dark me-2"><i class="fas fa-user-plus"></i> Sign Up</button>
+        <button type="button" class="btn btn-outline-dark me-2 "><i class="fas fa-sign-in-alt"></i> Log Out</button>
+    </form>
+</nav>
+
+<div class="alert alert-dark" role="alert">
+    <i class="fas fa-shopping-cart"></i> Item
+</div>
+
+
+
+<section class="container-fluid bg-light ">
+    <div class="row">
+        <div class="col pb-9 pt-2">
+            <section class="container-fluid bg-gradient pt-3">
+                <div class="row w-50 bg-gradient"><h4>Save Item</h4></div>
+                <div class="row bg-gradient">
+                    <form class="mt-4 mb-4 w-100" >
+                        <input class="form-control w-50" type="search" placeholder="Search" aria-label="Search">
+                    </form>
+                </div>
+                <div class="row bg-gradient">
+                    <div class="col-6 pb-5">
+                        <button type="button" class="btn bg-success w-100">Search</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col pt-5">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#newItemid">
+                New Item
+            </button>
+            <button type="button" class="btn btn-outline-primary" style="margin-top: 5px">
+                View All
+            </button>
+
+
+            <!-- New Cust -->
+            <div class="modal fade" id="newItemid" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                 aria-labelledby="custl" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="custl">New Item</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h4>Item ID</h4>
+                            <form class="d-flex mt-4 mb-4">
+                                <input class="form-control" type="text">
+                            </form>
+                            <h4>Item Name</h4>
+                            <form class="d-flex mt-4 mb-4">
+                                <input class="form-control" type="text">
+                            </form>
+                            <h4>Item Price</h4>
+                            <form class="d-flex mt-4 mb-4">
+                                <input class="form-control" type="text">
+                            </form>
+                            <h4>Item Qty</h4>
+                            <form class="d-flex mt-4 mb-4">
+                                <input class="form-control" type="text">
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                            <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Clear</button>
+                            <button type="button" class="btn btn-danger">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-1" ><button type="button" class="btn btn-primary w-100">Clear</button></div>
+        <div class="col-1"><button type="button" class="btn btn-danger w-100">Delete</button></div>
+        <div class="col-1"> <button type="button" class="btn btn-secondary w-100">Update</button></div>
+    </div>
+
+
+    <div class="row pb-5">
+        <table class="table">
+            <thead class="table-active">
+            <tr>
+                <th scope="col">Item ID</th>
+                <th scope="col">Item Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Qty</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">I-001</th>
+                <td>Samba</td>
+                <td>700</td>
+                <td>600</td>
+            </tr>
+            <tr>
+                <th scope="row">I-002</th>
+                <td>Nadu</td>
+                <td>600</td>
+                <td>600</td>
+            </tr>
+            <tr>
+                <th scope="row">I-003</th>
+                <td>Meat</td>
+                <td>20</td>
+                <td>890</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+</html>

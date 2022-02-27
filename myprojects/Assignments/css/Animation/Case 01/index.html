@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Case 01</title>
+    <style>
+        section{
+            width: 150px;
+            height: 50px;
+            background-color:blue ;
+            animation-name: test;
+            animation-duration: 5s;
+            position: relative;
+            animation-iteration-count: infinite; /*1..9 | infinite*/
+            animation-direction: alternate;
+        }
+        @keyframes test {
+            0%{
+                top: 20px;
+                left: 0;
+                background-color: aqua;
+            }
+            25%{
+                top: 20px;
+               left: 1300px;
+                background-color: red;
+                transform: rotate(90deg);
+            }
+            50%{
+                top: 600px;
+                left: 1300px;
+                background-color: burlywood;
+                transform: rotate(180deg);
+            }
+            75%{
+                left: 0;
+                top: 600px;
+                background-color: yellow;
+                transform: rotate(270deg);
+            }
+            100%{
+                top: 20px;
+                left: 0;
+                background-color: blue;
+                transform: rotate(360deg);
+            }
+
+        }
+    </style>
+</head>
+<body>
+<section></section>
+
+</body>
+</html>
