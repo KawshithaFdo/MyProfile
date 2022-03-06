@@ -65,15 +65,15 @@
         <div class="carousel-item">
             <img src="assets/images/image_02.jpg" class="d-block w-100" alt="..." style="height: 660px">
         </div>
-        <div class="carousel-item ">
+        <div class="carousel-item">
             <img src="assets/images/image_03.jpg" class="d-block w-100" alt="..." style="height: 660px">
         </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </button>
@@ -86,15 +86,15 @@
                 <div class="row bg-gradient "><h4>Save Customer</h4></div>
                 <div class="row bg-gradient">
                     <form class="mt-4 mb-4 w-100" >
-                        <input class="form-control w-50 col-sm-5 " type="search" placeholder="Search" aria-label="Search">
+                        <input id="search" class="form-control w-50 col-sm-5 " type="search" placeholder="Search/Delete" aria-label="Search">
                     </form>
                 </div>
                 <div class="row bg-gradient">
                     <div class="col-3 pb-5">
-                        <button type="button" class="btn bg-success  w-100 m-2">Search</button>
+                        <button id="searchButton" type="button" class="btn bg-success  w-100 m-2">Search</button>
                     </div>
                     <div class="mb-1">
-                        <button type="button" class="btn btn-primary ">Clear</button>
+                        <button id="ClearSearch" type="button" class="btn btn-primary ">Clear</button>
                         <button id="DeleteCustomer" type="button" class="btn btn-danger ">Delete</button>
                         <button id="UpdateCustomer" type="button" class="btn btn-secondary ">Update</button>
                     </div>
@@ -149,16 +149,16 @@
                 <div class="row w-50 bg-gradient"><h4>Save Item</h4></div>
                 <div class="row bg-gradient">
                     <form class="mt-4 mb-4 w-100" >
-                        <input class="form-control w-50" type="search" placeholder="Search" aria-label="Search">
+                        <input id="itemsearch" class="form-control w-50" type="search" placeholder="Search/Delete" aria-label="Search">
                     </form>
                 </div>
                 <div class="row bg-gradient">
                     <div class="col-6 pb-5">
-                        <button type="button" class="btn bg-success w-100">Search</button>
+                        <button id="btnsearchItem" type="button" class="btn bg-success w-100">Search</button>
                     </div>
                     <div class="mb-1">
-                        <button type="button" class="btn btn-primary ">Clear</button>
-                        <button type="button" class="btn btn-danger ">Delete</button>
+                        <button id="ClearItem" type="button" class="btn btn-primary ">Clear</button>
+                        <button id="DeleteItem" type="button" class="btn btn-danger ">Delete</button>
                         <button id="UpdateItem" type="button" class="btn btn-secondary ">Update</button>
                     </div>
                 </div>
@@ -183,7 +183,7 @@
             </div>
             <div class="mb-3">
                 <button id="btnsaveItem" type="button" class="btn btn-primary" >Save</button>
-                <button id="clearItem" type="button" class="btn btn-outline-primary">Clear</button>
+                <button id="clear" type="button" class="btn btn-outline-primary">Clear</button>
             </div>
         </div>
     </div>
@@ -416,7 +416,9 @@
 
 <script src="assets/jQuery/jquery-3.6.0.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
-
+<script src="db/db.js"></script>
+<script src="controller/CustomerController.js"></script>
+<script src="model/CustomerDto.js"></script>
 <script>
     $("#db").css("display","block");
     $("#cu").css("display","none");
@@ -451,124 +453,119 @@
     });
 
     //----------------Validate Customer-----------------------------------------------------------
-        $("#btnSaveOrUpdate").attr('disabled','disabled');
+    $("#btnSaveOrUpdate").attr('disabled','disabled');
 
-            var idPattern = /^[C](-00)[0-9]{1,4}$/;
-            var namePattern =/^[A-z0-9 ]{3,}$/;
-            var addressPattern =/^[A-z0-9 ]{3,}$/;
-            var salaryPattern=/^[0-9]+$/;
+    var idPattern = /^[C](-00)[0-9]{1,4}$/;
+    var namePattern =/^[A-z0-9 ]{3,}$/;
+    var addressPattern =/^[A-z0-9 ]{3,}$/;
+    var salaryPattern=/^[0-9]+$/;
 
-            $("#txtCustId").keyup(function (eventOb) {
-                if (idPattern.test($("#txtCustId").val())){
-                    $("#txtCustId").css("border","2px solid green");
-                    if (eventOb.key == "Enter") {
-                        $("#txtCustName").focus();
+    $("#txtCustId").keyup(function (eventOb) {
+        if (idPattern.test($("#txtCustId").val())){
+            $("#txtCustId").css("border","2px solid green");
+            if (eventOb.key == "Enter") {
+                $("#txtCustName").focus();
 
-                        $("#txtCustName").keyup(function (eventOb) {
-                            if (namePattern.test($("#txtCustName").val())){
-                                $("#txtCustName").css("border","2px solid green");
-                                if (eventOb.key == "Enter") {
-                                    $("#txtCustAddress").focus();
+                $("#txtCustName").keyup(function (eventOb) {
+                    if (namePattern.test($("#txtCustName").val())){
+                        $("#txtCustName").css("border","2px solid green");
+                        if (eventOb.key == "Enter") {
+                            $("#txtCustAddress").focus();
 
-                                    $("#txtCustAddress").keyup(function (eventOb) {
-                                        if (addressPattern.test($("#txtCustAddress").val())){
-                                            $("#txtCustAddress").css("border","2px solid green");
-                                            if (eventOb.key == "Enter") {
-                                                $("#txtCustSalary").focus();
+                            $("#txtCustAddress").keyup(function (eventOb) {
+                                if (addressPattern.test($("#txtCustAddress").val())){
+                                    $("#txtCustAddress").css("border","2px solid green");
+                                    if (eventOb.key == "Enter") {
+                                        $("#txtCustSalary").focus();
 
-                                                $("#txtCustSalary").keyup(function (eventOb) {
-                                                    if (salaryPattern.test($("#txtCustSalary").val())){
-                                                        $("#txtCustSalary").css("border","2px solid green");
-                                                        $("#btnSaveOrUpdate").removeAttr('disabled');
-                                                        if (eventOb.key == "Enter") {
-                                                            $("#btnSaveOrUpdate").focus();
-                                                        }
-                                                    }else{
-                                                        $("#txtCustSalary").css("border","2px solid red");
-                                                        $("#btnSaveOrUpdate").attr('disabled','disabled');
-                                                    }
-                                                });
-
+                                        $("#txtCustSalary").keyup(function (eventOb) {
+                                            if (salaryPattern.test($("#txtCustSalary").val())){
+                                                $("#txtCustSalary").css("border","2px solid green");
+                                                $("#btnSaveOrUpdate").removeAttr('disabled');
+                                                if (eventOb.key == "Enter") {
+                                                    $("#btnSaveOrUpdate").focus();
+                                                }
+                                            }else{
+                                                $("#txtCustSalary").css("border","2px solid red");
+                                                $("#btnSaveOrUpdate").attr('disabled','disabled');
                                             }
-                                        }else{
-                                            $("#txtCustAddress").css("border","2px solid red");
-                                            $("#btnSaveOrUpdate").attr('disabled','disabled');
-                                        }
-                                    });
+                                        });
 
-
+                                    }
+                                }else{
+                                    $("#txtCustAddress").css("border","2px solid red");
+                                    $("#btnSaveOrUpdate").attr('disabled','disabled');
                                 }
-                            }else{
-                                $("#txtCustName").css("border","2px solid red");
-                                $("#btnSaveOrUpdate").attr('disabled','disabled');
-                            }
-                        });
+                            });
 
 
+                        }
+                    }else{
+                        $("#txtCustName").css("border","2px solid red");
+                        $("#btnSaveOrUpdate").attr('disabled','disabled');
                     }
-                }else{
-                    $("#txtCustId").css("border","2px solid red");
-                    $("#btnSaveOrUpdate").attr('disabled','disabled');
-                }
-            });
+                });
 
-    //---------------Add Customer(get Data in input fields)----------------------------------------
+
+            }
+        }else{
+            $("#txtCustId").css("border","2px solid red");
+            $("#btnSaveOrUpdate").attr('disabled','disabled');
+        }
+    });
+
+    //----------------------Customer--------------------------------------------------------------
+
         $("#btnSaveOrUpdate").click(function () {
-
-            $("#customerTable>tr").off("click");
-
             let customerID = $("#txtCustId").val();
             let customerName = $("#txtCustName").val();
             let customerAddress = $("#txtCustAddress").val();
             let customerSalary = $("#txtCustSalary").val();
 
-            let row = `<tr><td>${customerID}</td><td>${customerName}</td><td>${customerAddress}</td><td>${customerSalary}</td></tr>`;
+            var customer=new CustomerDto(customerID,customerName,customerAddress,customerSalary);
 
-            $("#customerTable").append(row);
-
-            alert("Customer Added Successfully");
+            saveCustomer(customer);
+            clearAll();
+            loadallCustomers();
             $("#btnSaveOrUpdate").attr('disabled','disabled');
-
-                $("#txtCustId").val(null);
-                $("#txtCustName").val(null);
-                $("#txtCustAddress").val(null);
-                $("#txtCustSalary").val(null);
-
-//-----------------------------Show Data in input fields------------------------------------------
-            $("#customerTable>tr").click(function () {
-                let cusID = $(this).children(":eq(0)").text();
-                let cusName = $(this).children(":eq(1)").text();
-                let cusAddress = $(this).children(":eq(2)").text();
-                let cusSalary = $(this).children(":eq(3)").text();
-
-                $("#txtCustId").val(cusID);
-                $("#txtCustName").val(cusName);
-                $("#txtCustAddress").val(cusAddress);
-                $("#txtCustSalary").val(cusSalary);
-
-            });
-
         });
-    //----------------Clear Customer---------------------------------------------------------------
+        $("#searchButton").click(function () {
+            var searchID = $("#search").val();
+            var response = searchCustomer(searchID);
+            if (response) {
+                $("#txtCustId").val(response.id);
+                $("#txtCustName").val(response.name);
+                $("#txtCustAddress").val(response.address);
+                $("#txtCustSalary").val(response.salary);
+            }else{
+                clearAll();
+                alert("No Customer");
+            }
+        });
         $("#clearCustomer").click(function () {
-            $("#txtCustId").val(null);
-            $("#txtCustName").val(null);
-            $("#txtCustAddress").val(null);
-            $("#txtCustSalary").val(null);
+        clearAll();
     });
+        $("#ClearSearch").click(function () {
+            clearAll();
+        });
+        $("#DeleteCustomer").click(function () {
+            var D_id = $("#search").val();
+            deleteCustomer(D_id);
+            clearAll();
+            loadallCustomers();
+         });
+        $("#UpdateCustomer").click(function () {
+            let customerID = $("#txtCustId").val();
+            let customerName = $("#txtCustName").val();
+            let customerAddress = $("#txtCustAddress").val();
+            let customerSalary = $("#txtCustSalary").val();
 
-    //---------------Update Customer--------------------------------------------------------------
-    $("#UpdateCustomer").click(function () {
-        let customerID = $("#txtCustId").val();
-        let customerName = $("#txtCustName").val();
-        let customerAddress = $("#txtCustAddress").val();
-        let customerSalary = $("#txtCustSalary").val();
+            var cust=new CustomerDto(customerID,customerName,customerAddress,customerSalary);
 
-        let row = `<tr><td>${customerID}</td><td>${customerName}</td><td>${customerAddress}</td><td>${customerSalary}</td></tr>`;
-
+            updateCustomer(cust);
+        clearAll();
+        loadallCustomers();
     });
-
-    //----------------Delete Customer------------------------------------------------------------
 
     //----------------Validate Item---------------------------------------------------------------
     $("#btnsaveItem").attr('disabled','disabled');
@@ -632,53 +629,59 @@
         }
     });
 
-    //---------------Add Item----------------------------------------------------------------------
-        $("#btnsaveItem").click(function () {
+    //---------------Item----------------------------------------------------------------------
 
-        $("#itemTable>tr").off("click");
+            $("#btnsaveItem").click(function () {
+                let itemId = $("#txtItemId").val();
+                let itemName = $("#txtItemName").val();
+                let itemQty = $("#txtItemQty").val();
+                let itemPrice = $("#txtItemPrice").val();
 
-        let itemId = $("#txtItemId").val();
-        let itemName = $("#txtItemName").val();
-        let itemPrice = $("#txtItemPrice").val();
-        let itemQty = $("#txtItemQty").val();
+                var item=new ItemDto(itemId,itemName,itemPrice,itemQty);
 
-        let row = `<tr><td>${itemId}</td><td>${itemName}</td><td>${itemPrice}</td><td>${itemQty}</td></tr>`;
-        $("#itemTable").append(row);
-
-        alert("Item Added Successfully");
-        $("#btnsaveItem").attr('disabled','disabled');
-
-            $("#txtItemId").val(null);
-                $("#txtItemName").val(null);
-                $("#txtItemPrice").val(null);
-                $("#txtItemQty").val(null);
-
-            $("#itemTable>tr").click(function () {
-
-            let itemID = $(this).children(":eq(0)").text();
-            let itemName = $(this).children(":eq(1)").text();
-            let itemPrice = $(this).children(":eq(2)").text();
-            let itemQty = $(this).children(":eq(3)").text();
-
-            console.log(itemID, itemName, itemPrice, itemQty);
-
-            // set values for the input fields
-            $("#txtItemId").val(itemID);
-            $("#txtItemName").val(itemName);
-            $("#txtItemPrice").val(itemPrice);
-            $("#txtItemQty").val(itemQty);
-
-        });
-
+                saveItem(item);
+                clearAll();
+                loadallCustomers();
+                $("#btnsaveItem").attr('disabled','disabled');
+            });
+            $("#btnsearchItem").click(function () {
+                var searchID = $("#itemsearch").val();
+                var response = searchItem(searchID);
+                if (response) {
+                    $("#txtItemId").val(response.id);
+                    $("#txtItemName").val(response.name);
+                    $("#txtItemPrice").val(response.price);
+                    $("#txtItemQty").val(response.qty);
+                }else{
+                    clearAll();
+                    alert("No item");
+                }
+            });
+            $("#Clear").click(function () {
+                clearAll();
+            });
+            $("#ClearItem").click(function () {
+        clearAll();
     });
-    //---------------Clear Item--------------------------------------------------------------------
-        $("#clearItem").click(function () {
-            $("#txtItemId").val(null);
-            $("#txtItemName").val(null);
-            $("#txtItemPrice").val(null);
-            $("#txtItemQty").val(null);
+            $("#DeleteItem").click(function () {
+                var D_id = $("#itemsearch").val();
+                deleteCustomer(D_id);
+                clearAll();
+                loadallCustomers();
+            });
+            $("#UpdateItem").click(function () {
+                let itemId = $("#txtItemId").val();
+                let itemName = $("#txtItemName").val();
+                let itemQty = $("#txtItemQty").val();
+                let itemPrice = $("#txtItemPrice").val();
 
-    });
+                var item=new ItemDto(itemId,itemName,itemPrice,itemQty);
+
+                updateItem(item);
+                clearAll();
+                loadallCustomers();
+            });
+
 </script>
 
 <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
