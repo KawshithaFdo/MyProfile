@@ -219,13 +219,13 @@
                     <div class="col">
                         <caption>Order ID:</caption>
                         <form>
-                            <input class="form-control " type="text">
+                            <input id="txtO_Id" class="form-control " type="text">
                         </form>
                     </div>
                     <div class="col">
                         <caption>Order Date:</caption>
                         <form>
-                            <input class="form-control " type="text">
+                            <input id="txtO_Date" class="form-control " type="text">
                         </form>
                     </div>
 
@@ -233,44 +233,41 @@
 
                 <div class="row">
                     <div class="col">
-                        <caption>Customer:</caption>
+                        <caption>Customer_ID:</caption>
                         <form>
-                            <input class="form-control " type="text">
+                            <input id="txtC_Id" class="form-control " type="text">
                         </form>
                     </div>
                     <div class="col">
-                        <caption>Customer_ID:</caption>
-                        <form>
-                            <input class="form-control " type="text">
-                        </form>
+                        <button id="btnEnterCustomer" class="btn btn-primary mt-4">Enter</button>
                     </div>
 
                 </div>
-
                 <div class="row">
                     <div class="col">
                         <caption>Name:</caption>
                         <form>
-                            <input class="form-control " type="text">
+                            <input id="txtC_Name" class="form-control " type="text">
                         </form>
                     </div>
-                    <div class="col">
-                        <caption>Salary:</caption>
-                        <form>
-                            <input class="form-control " type="text">
-                        </form>
-                    </div>
-
                 </div>
 
                 <div class="row">
                     <div class="col">
                         <caption>Address:</caption>
                         <form>
-                            <input class="form-control " type="text">
+                            <input id="txtC_Address" class="form-control " type="text">
                         </form>
                     </div>
+                    <div class="col">
+                        <caption>Salary:</caption>
+                        <form>
+                            <input id="txtC_Salary" class="form-control " type="text">
+                        </form>
+                    </div>
+
                 </div>
+
             </section>
         </div>
 
@@ -281,36 +278,36 @@
                 <div class="row">
                     <div class="bg-info mb-3 p-2"><h4>Item Details</h4></div>
                     <div class="col">
-                        <caption>Item:</caption>
+                        <caption>Item Id:</caption>
                         <form>
-                            <input class="form-control " type="text">
+                            <input id="txtI_Id" class="form-control " type="text">
                         </form>
                     </div>
                     <div class="col">
-                        <caption>Item Code:</caption>
+                        <button id="btnEnterItem" class="btn btn-primary mt-4">Enter</button>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <caption>Item Name:</caption>
                         <form>
-                            <input class="form-control " type="text">
+                            <input id="txtI_Name" class="form-control " type="text">
                         </form>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col">
-                        <caption>Item Name:</caption>
-                        <form>
-                            <input class="form-control " type="text">
-                        </form>
-                    </div>
-                    <div class="col">
                         <caption>Item Price:</caption>
                         <form>
-                            <input class="form-control " type="text">
+                            <input id="txtI_Price" class="form-control " type="text">
                         </form>
                     </div>
                     <div class="col">
                         <caption>QtyOnH:</caption>
                         <form>
-                            <input class="form-control " type="text">
+                            <input id="txtI_Qoh" class="form-control " type="text">
                         </form>
                     </div>
 
@@ -320,7 +317,7 @@
                     <div class="col">
                         <caption>Order QTY:</caption>
                         <form>
-                            <input class="form-control " type="text">
+                            <input id="txtI_Qty" class="form-control " type="text">
                         </form>
                     </div>
                 </div>
@@ -328,7 +325,7 @@
 
                 <div class="row">
                     <div class="col">
-                        <button class="btn btn-success mt-4">Add Item</button>
+                        <button id="btnAddItem" class="btn btn-success mt-4">Add Item</button>
                     </div>
                 </div>
             </section>
@@ -336,8 +333,8 @@
 
 
         <div class="col bg-gradient m-4 pb-4">
-            <h4 class="text-secondary">Total: 0Rs./=</h4>
-            <h4 class="text-secondary">Sub Total: 0Rs./=</h4>
+            <h4 id="lblTotal" class="text-secondary">Total: 0Rs./=</h4>
+            <h4 id="lblS_Total" class="text-secondary">Sub Total: 0Rs./=</h4>
 
             <section class="container">
 
@@ -345,13 +342,13 @@
                     <div class="col">
                         <caption>Payment:</caption>
                         <form>
-                            <input class="form-control " type="text">
+                            <input id="txtPayment" class="form-control " type="text">
                         </form>
                     </div>
                     <div class="col">
                         <caption>Discount:</caption>
                         <form>
-                            <input class="form-control " type="text">
+                            <input id="txtDiscount" class="form-control " type="text">
                         </form>
                     </div>
                 </div>
@@ -361,7 +358,7 @@
                     <div CLASS="col">
                         <caption>Balance:</caption>
                         <form>
-                            <input class="form-control " type="text">
+                            <input id="txtBalance" class="form-control " type="text">
                         </form>
                     </div>
                 </div>
@@ -369,7 +366,7 @@
 
                 <div class="row">
                     <div class="col">
-                        <button class="btn btn-success mt-4">Place Order</button>
+                        <button id="btnPlaceOrder" class="btn btn-success mt-4">Place Order</button>
                     </div>
                 </div>
             </section>
@@ -382,31 +379,14 @@
             <table class="table">
                 <thead class="bg-info">
                 <tr>
-                    <th scope="col">Customer Name</th>
-                    <th scope="col">Age</th>
-                    <th scope="col">Contact</th>
-                    <th scope="col">Salary</th>
+                    <th scope="col">Item ID</th>
+                    <th scope="col">Item Name</th>
+                    <th scope="col">Qty</th>
+                    <th scope="col">Price</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">Malitha</th>
-                    <td>25</td>
-                    <td>0709887654</td>
-                    <td>60,000</td>
-                </tr>
-                <tr>
-                    <th scope="row">Siripala</th>
-                    <td>55</td>
-                    <td>0789065432</td>
-                    <td>90,000</td>
-                </tr>
-                <tr>
-                    <th scope="row">Jinadasa</th>
-                    <td>65</td>
-                    <td>0754321890</td>
-                    <td>55,000</td>
-                </tr>
+                <tbody id="OrderTable">
+
                 </tbody>
             </table>
         </div>
@@ -419,6 +399,11 @@
 <script src="db/db.js"></script>
 <script src="controller/CustomerController.js"></script>
 <script src="model/CustomerDto.js"></script>
+<script src="controller/ItemController.js"></script>
+<script src="model/ItemDto.js"></script>
+<script src="controller/OrderController.js"></script>
+<script src="model/ItemDetailsDto.js"></script>
+
 <script>
     $("#db").css("display","block");
     $("#cu").css("display","none");
@@ -453,13 +438,14 @@
     });
 
     //----------------Validate Customer-----------------------------------------------------------
-    $("#btnSaveOrUpdate").attr('disabled','disabled');
+  //  $("#btnSaveOrUpdate").attr('disabled','disabled');
 
     var idPattern = /^[C](-00)[0-9]{1,4}$/;
     var namePattern =/^[A-z0-9 ]{3,}$/;
     var addressPattern =/^[A-z0-9 ]{3,}$/;
     var salaryPattern=/^[0-9]+$/;
 
+/*
     $("#txtCustId").keyup(function (eventOb) {
         if (idPattern.test($("#txtCustId").val())){
             $("#txtCustId").css("border","2px solid green");
@@ -513,6 +499,7 @@
             $("#btnSaveOrUpdate").attr('disabled','disabled');
         }
     });
+*/
 
     //----------------------Customer--------------------------------------------------------------
 
@@ -527,7 +514,7 @@
             saveCustomer(customer);
             clearAll();
             loadallCustomers();
-            $("#btnSaveOrUpdate").attr('disabled','disabled');
+          //  $("#btnSaveOrUpdate").attr('disabled','disabled');
         });
         $("#searchButton").click(function () {
             var searchID = $("#search").val();
@@ -568,13 +555,14 @@
     });
 
     //----------------Validate Item---------------------------------------------------------------
-    $("#btnsaveItem").attr('disabled','disabled');
+  //  $("#btnsaveItem").attr('disabled','disabled');
 
-    var idPattern = /^[C](-00)[0-9]{1,4}$/;
+    var idPattern = /^[I](-00)[0-9]{1,4}$/;
     var namePattern =/^[A-z0-9 ]{3,}$/;
     var qtyPattern =/^[0-9]{1,}$/;
-    var pricePattern=/^[1-9][0-9]*([.][0-9]{1,2})?$/;
+    var pricePattern=/^[0-9]{1,}[.]?[0-9]{1,2}$/;
 
+/*
     $("#txtItemId").keyup(function (eventOb) {
         if (idPattern.test($("#txtItemId").val())){
             $("#txtItemId").css("border","2px solid green");
@@ -628,6 +616,7 @@
             $("#btnsaveItem").attr('disabled','disabled');
         }
     });
+*/
 
     //---------------Item----------------------------------------------------------------------
 
@@ -640,9 +629,9 @@
                 var item=new ItemDto(itemId,itemName,itemPrice,itemQty);
 
                 saveItem(item);
-                clearAll();
-                loadallCustomers();
-                $("#btnsaveItem").attr('disabled','disabled');
+                clearAllItems();
+                loadallItems();
+              //  $("#btnsaveItem").attr('disabled','disabled');
             });
             $("#btnsearchItem").click(function () {
                 var searchID = $("#itemsearch").val();
@@ -653,21 +642,21 @@
                     $("#txtItemPrice").val(response.price);
                     $("#txtItemQty").val(response.qty);
                 }else{
-                    clearAll();
+                    clearAllItems();
                     alert("No item");
                 }
             });
             $("#Clear").click(function () {
-                clearAll();
+                clearAllItems();
             });
             $("#ClearItem").click(function () {
-        clearAll();
-    });
+                clearAllItems();
+            });
             $("#DeleteItem").click(function () {
                 var D_id = $("#itemsearch").val();
-                deleteCustomer(D_id);
-                clearAll();
-                loadallCustomers();
+                deleteItem(D_id);
+                clearAllItems();
+                loadallItems();
             });
             $("#UpdateItem").click(function () {
                 let itemId = $("#txtItemId").val();
@@ -678,9 +667,55 @@
                 var item=new ItemDto(itemId,itemName,itemPrice,itemQty);
 
                 updateItem(item);
-                clearAll();
-                loadallCustomers();
+                clearAllItems();
+                loadallItems();
             });
+
+    //-----------Validate Orders------------------------------------------------------------
+
+
+
+
+    //----------------Orders-----------------------------------------------------------------
+    $("#btnEnterCustomer").click(function () {
+        var searchID = $("#txtC_Id").val();
+        var response = searchCustomer(searchID);
+        if (response) {
+            $("#txtC_Name").val(response.name);
+            $("#txtC_Address").val(response.address);
+            $("#txtC_Salary").val(response.salary);
+        }else{
+            clearAll();
+            alert("Wrong Customer Id.");
+        }
+    });
+    $("#btnEnterItem").click(function () {
+        var searchID = $("#txtI_Id").val();
+        var response = searchItem(searchID);
+        if (response) {
+            $("#txtI_Name").val(response.name);
+            $("#txtI_Price").val(response.price);
+            $("#txtI_Qoh").val(response.qty);
+        }else{
+            clearAll();
+            alert("Wrong Item Id.");
+        }
+    });
+    $("#btnAddItem").click(function () {
+        let orderId=$("#txtO_Id").val();
+        let itemId = $("#txtI_Id").val();
+        let itemName = $("#txtI_Name").val();
+        let custid = $("#txtC_Id").val();
+        let qty = $("#txtI_Qty").val();
+        let qoh=$("#txtI_Qoh").val();
+        let price=(($("#txtI_Price").val())*(qty));
+
+        var itemdetails=new ItemDetailsDto(orderId,itemId,itemName,custid,qty,qoh,price);
+
+        loadtabledata(itemdetails);
+        clear();
+    });
+
 
 </script>
 

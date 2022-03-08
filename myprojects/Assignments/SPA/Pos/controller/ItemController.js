@@ -1,12 +1,12 @@
 function saveItem(item){
     dbItem.push(item);
-    alert("Customer Added Successfully");
+    alert("Item Added Successfully");
 }
 function loadallItems(){
     $("#itemTable").empty();
     for (var i of dbItem) {
         let row = `<tr><td>${i.id}</td><td>${i.name}</td><td>${i.price}</td><td>${i.qty}</td></tr>`;
-        $("#customerTable").append(row);
+        $("#itemTable").append(row);
 
     }
 }
@@ -24,7 +24,7 @@ function deleteItem(id) {
             d_index=i;
         }
     }
-    dbCustomer.splice(d_index,1);
+    dbItem.splice(d_index,1);
 }
 function updateItem(item){
     for (let i = 0; i < dbItem.length; i++) {
@@ -36,6 +36,6 @@ function updateItem(item){
     }
 
 }
-function clearAll() {
+function clearAllItems() {
     $('#txtItemId,#txtItemName,#txtItemPrice,#txtItemQty,#itemsearch').val("");
 }
