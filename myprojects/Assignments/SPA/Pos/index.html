@@ -326,6 +326,8 @@
                 <div class="row">
                     <div class="col">
                         <button id="btnAddItem" class="btn btn-success mt-4">Add Item</button>
+                        <button id="btnClearTable" class="btn btn-danger mt-4">Clear Table</button>
+
                     </div>
                 </div>
             </section>
@@ -333,8 +335,15 @@
 
 
         <div class="col bg-gradient m-4 pb-4">
-            <h4 id="lblTotal" class="text-secondary">Total: 0Rs./=</h4>
-            <h4 id="lblS_Total" class="text-secondary">Sub Total: 0Rs./=</h4>
+            <div class="row">
+                <h4  class="text-secondary">Total </h4>
+                <h4 id="lblTotal" class="text-secondary"> </h4>
+
+               <!-- <form>
+                    <input id="lblTotal" class="form-control " type="text">
+                </form>-->
+            </div>
+
 
             <section class="container">
 
@@ -701,6 +710,7 @@
             alert("Wrong Item Id.");
         }
     });
+    let total=0;
     $("#btnAddItem").click(function () {
         let orderId=$("#txtO_Id").val();
         let itemId = $("#txtI_Id").val();
@@ -714,6 +724,22 @@
 
         loadtabledata(itemdetails);
         clear();
+       total+= price;
+        $("#lblTotal").text(total);
+    });
+    $("#btnClearTable").click(function () {
+        $("#OrderTable").remove();
+        $("#lblTotal").text("");
+
+    });
+    $("#txtDiscount").keyup(function () {
+        let payment = $("#txtPayment").val();
+        let discount = $("#txtDiscount").val();
+        let price=total-discount;
+        $("#txtBalance").val(payment-price);
+    });
+    $("#btnPlaceOrder").click(function () {
+
     });
 
 
