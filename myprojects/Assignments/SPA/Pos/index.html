@@ -412,6 +412,8 @@
 <script src="model/ItemDto.js"></script>
 <script src="controller/OrderController.js"></script>
 <script src="model/ItemDetailsDto.js"></script>
+<script src="controller/OrderDetailsController.js"></script>
+<script src="model/OrderDto.js"></script>
 
 <script>
     $("#db").css("display","block");
@@ -715,13 +717,13 @@
         let orderId=$("#txtO_Id").val();
         let itemId = $("#txtI_Id").val();
         let itemName = $("#txtI_Name").val();
-        let custid = $("#txtC_Id").val();
         let qty = $("#txtI_Qty").val();
         let qoh=$("#txtI_Qoh").val();
         let price=(($("#txtI_Price").val())*(qty));
 
-        var itemdetails=new ItemDetailsDto(orderId,itemId,itemName,custid,qty,qoh,price);
+        var itemdetails=new ItemDetailsDto(orderId,itemId,itemName,qty,qoh,price);
 
+        itemList.push(itemdetails);
         loadtabledata(itemdetails);
         clear();
        total+= price;
@@ -739,7 +741,18 @@
         $("#txtBalance").val(payment-price);
     });
     $("#btnPlaceOrder").click(function () {
+        let orderId=$("#txtO_Id").val();
+        let date=$("#txtO_Date")
+        let itemId = $("#txtI_Id").val();
+        let custid=$("#txtC_Id").val();
+        let qty = $("#txtI_Qty").val();
 
+        var order=new OrderDto(orderId,date,custid,total);
+        placeOrder(order);
+        updateqty(itemId,qty);
+        AddOrder(itemList);
+
+        itemList.splice(0,itemList.length);
     });
 
 

@@ -8,7 +8,13 @@ function clear() {
 function updateqty(itemId,qty){
     for (var i in dbItem){
         if (dbItem[i].id==itemId){
+            console.log(dbItem[i].qty);
             dbItem[i].qty-=qty;
+            console.log(dbItem[i].qty);
         }
     }
+}
+function placeOrder(Order) {
+    dbOrder.push(Order);
+    alert("Order Placed Successfully");
 }
