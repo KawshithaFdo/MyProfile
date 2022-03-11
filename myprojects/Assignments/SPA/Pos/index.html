@@ -426,6 +426,7 @@
         $("#db").css("display","none");
         $("#it").css("display","none");
         $("#or").css("display","none");
+        loadallCustomers();
 
     });
     $("#item").click(function (){
@@ -433,6 +434,8 @@
         $("#cu").css("display","none");
         $("#or").css("display","none");
         $("#db").css("display","none");
+
+        loadallItems();
 
     });
     $("#order").click(function (){
@@ -566,68 +569,58 @@
     });
 
     //----------------Validate Item---------------------------------------------------------------
-  //  $("#btnsaveItem").attr('disabled','disabled');
-
-    var idPattern = /^[I](-00)[0-9]{1,4}$/;
-    var namePattern =/^[A-z0-9 ]{3,}$/;
-    var qtyPattern =/^[0-9]{1,}$/;
-    var pricePattern=/^[0-9]{1,}[.]?[0-9]{1,2}$/;
-
-/*
-    $("#txtItemId").keyup(function (eventOb) {
-        if (idPattern.test($("#txtItemId").val())){
-            $("#txtItemId").css("border","2px solid green");
-            if (eventOb.key == "Enter") {
-                $("#txtItemName").focus();
-
-                $("#txtItemName").keyup(function (eventOb) {
-                    if (namePattern.test($("#txtItemName").val())){
-                        $("#txtItemName").css("border","2px solid green");
-                        if (eventOb.key == "Enter") {
-                            $("#txtItemPrice").focus();
-
-                            $("#txtItemPrice").keyup(function (eventOb) {
-                                if (pricePattern.test($("#txtItemPrice").val())){
-                                    $("#txtItemQty").css("border","2px solid green");
-                                    if (eventOb.key == "Enter") {
-                                        $("#txtItemQty").focus();
-
-                                        $("#txtItemQty").keyup(function (eventOb) {
-                                            if (qtyPattern.test($("#txtItemQty").val())){
-                                                $("#txtItemQty").css("border","2px solid green");
-                                                $("#btnsaveItem").removeAttr('disabled');
-                                                if (eventOb.key == "Enter") {
-                                                    $("#btnsaveItem").focus();
-                                                }
-                                            }else{
-                                                $("#txtItemQty").css("border","2px solid red");
-                                                $("#btnsaveItem").attr('disabled','disabled');
-                                            }
-                                        });
-
-                                    }
-                                }else{
-                                    $("#txtItemPrice").css("border","2px solid red");
-                                    $("#btnsaveItem").attr('disabled','disabled');
-                                }
-                            });
+    let allValidators = [];
+    //Regular expression
+    var itemCodeRegEx = /^(I00-)[0-9]{3}$/;
+    var itemNameRegEx = /^[A-z ]{4,}$/;
+    var itemUnitPriceRegEx = /^[0-9]{1,}[.]?[0-9]{1,2}$/;
+    var itemQtyOnHandRegEx = /^[0-9]{1,}[.]?[0-9]{1,2}$/;
 
 
-                        }
-                    }else{
-                        $("#txtItemName").css("border","2px solid red");
-                        $("#btnsaveItem").attr('disabled','disabled');
-                    }
-                });
+    allValidators.push([itemCodeRegEx, $("#txtItemId")]);
+    allValidators.push([itemNameRegEx, $("#txtItemName")]);
+    allValidators.push([itemQtyOnHandRegEx, $("#txtItemPrice")]);
+    allValidators.push([itemUnitPriceRegEx, $("#txtItemQty")]);
 
 
-            }
-        }else{
-            $("#txtItemId").css("border","2px solid red");
-            $("#btnsaveItem").attr('disabled','disabled');
-        }
+
+    $("#txtItemId,#txtItemName,#txtItemPrice,#txtItemQty").on('keyup', function (e) {
+        validateText(allValidators, e.key);
     });
-*/
+
+    setDisableAllText(allValidators);
+
+    function validateText(expression, key) {
+        for (let i = 0; i < expression.length; i++) {
+            var regEx = expression[i][0];
+            var input = expression[i][1];
+
+            //check whether someone type in the text field
+            if (input.val().length >= 1) {
+                if (regEx.test(input.val())) {
+                    input.css("border", '2px solid green');
+                    if (key == "Enter") {
+                        expression[i + 1][1].attr('disabled', false);
+                        expression[i + 1][1].focus();
+                    }
+                } else {
+                    input.css("border", '2px solid red');
+                }
+            } else {
+                input.css("border", '1px solid #ced4da');
+            }
+        }
+    }
+
+    function setDisableAllText(expression) {
+        $("#btnsaveItem").attr("disabled", true);
+        for (let i = 0; i < expression.length; i++) {
+            var input = expression[i+1][1];
+            input.attr('disabled', true);
+        }
+
+    }
+
 
     //---------------Item----------------------------------------------------------------------
 
@@ -745,11 +738,10 @@
         let date=$("#txtO_Date")
         let itemId = $("#txtI_Id").val();
         let custid=$("#txtC_Id").val();
-        let qty = $("#txtI_Qty").val();
 
         var order=new OrderDto(orderId,date,custid,total);
         placeOrder(order);
-        updateqty(itemId,qty);
+        updateqty(itemList);
         AddOrder(itemList);
 
         itemList.splice(0,itemList.length);
