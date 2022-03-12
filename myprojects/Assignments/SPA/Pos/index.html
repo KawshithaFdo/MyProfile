@@ -238,9 +238,6 @@
                             <input id="txtC_Id" class="form-control " type="text">
                         </form>
                     </div>
-                    <div class="col">
-                        <button id="btnEnterCustomer" class="btn btn-primary mt-4">Enter</button>
-                    </div>
 
                 </div>
                 <div class="row">
@@ -282,9 +279,6 @@
                         <form>
                             <input id="txtI_Id" class="form-control " type="text">
                         </form>
-                    </div>
-                    <div class="col">
-                        <button id="btnEnterItem" class="btn btn-primary mt-4">Enter</button>
                     </div>
 
                 </div>
@@ -831,15 +825,10 @@
 
     $('#txtO_Id,#txtO_Date,#txtC_Id,#txtC_Name,#txtC_Address,#txtC_Salary,#txtI_Id,#txtI_Name,#txtI_Price,#txtI_Qoh,#txtI_Qty,#txtPayment,#txtDiscount,#txtBalance').on('keydown', function (eventOb) {
         if (eventOb.key == "Tab") {
-            eventOb.preventDefault(); // stop execution of the button
+            eventOb.preventDefault();
         }
     });
 
-/*
-    $('#txtO_Id,#txtO_Date,#txtC_Id,#txtC_Name,#txtC_Address,#txtC_Salary,#txtI_Id,#txtI_Name,#txtI_Price,#txtI_Qoh,#txtI_Qty,#txtPayment,#txtDiscount,#txtBalance').on('blur', function () {
-        formValid();
-    });
-*/
 
 
     $("#txtO_Id").on('keyup', function (eventOb) {
@@ -862,15 +851,6 @@
         if (eventOb.key == "Enter") {
             checkorderValid();
         }
-
-        /*if (eventOb.key == "Control") {
-            var typedCustomerID = $("#txtCustId").val();
-            var srcCustomer = searchCustomer(typedCustomerID);
-            $("#txtCustId").val(srcCustomer.getCustomerID());
-            $("#txtCustName").val(srcCustomer.getCustomerName());
-            $("#txtCustAddress").val(srcCustomer.getCustomerAddress());
-            $("#txtCustSalary").val(srcCustomer.getCustomerSalary());
-        }*/
 
     });
 
@@ -1209,7 +1189,7 @@
 
         itemList.push(itemdetails);
         loadtabledata(itemdetails);
-        clear();
+
        total+= price;
         $("#lblTotal").text(total);
     });
@@ -1240,6 +1220,7 @@
 
         itemList.splice(0,itemList.length);
         clearAll();
+        clear();
         $("#OrderTable").remove();
     }
 
