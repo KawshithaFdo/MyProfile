@@ -451,84 +451,141 @@
         $("#or").css("display","none");
     });
 
-    //----------------Validate Customer-----------------------------------------------------------
-  //  $("#btnSaveOrUpdate").attr('disabled','disabled');
-
-    var idPattern = /^[C](-00)[0-9]{1,4}$/;
-    var namePattern =/^[A-z0-9 ]{3,}$/;
-    var addressPattern =/^[A-z0-9 ]{3,}$/;
-    var salaryPattern=/^[0-9]+$/;
-
-/*
-    $("#txtCustId").keyup(function (eventOb) {
-        if (idPattern.test($("#txtCustId").val())){
-            $("#txtCustId").css("border","2px solid green");
-            if (eventOb.key == "Enter") {
-                $("#txtCustName").focus();
-
-                $("#txtCustName").keyup(function (eventOb) {
-                    if (namePattern.test($("#txtCustName").val())){
-                        $("#txtCustName").css("border","2px solid green");
-                        if (eventOb.key == "Enter") {
-                            $("#txtCustAddress").focus();
-
-                            $("#txtCustAddress").keyup(function (eventOb) {
-                                if (addressPattern.test($("#txtCustAddress").val())){
-                                    $("#txtCustAddress").css("border","2px solid green");
-                                    if (eventOb.key == "Enter") {
-                                        $("#txtCustSalary").focus();
-
-                                        $("#txtCustSalary").keyup(function (eventOb) {
-                                            if (salaryPattern.test($("#txtCustSalary").val())){
-                                                $("#txtCustSalary").css("border","2px solid green");
-                                                $("#btnSaveOrUpdate").removeAttr('disabled');
-                                                if (eventOb.key == "Enter") {
-                                                    $("#btnSaveOrUpdate").focus();
-                                                }
-                                            }else{
-                                                $("#txtCustSalary").css("border","2px solid red");
-                                                $("#btnSaveOrUpdate").attr('disabled','disabled');
-                                            }
-                                        });
-
-                                    }
-                                }else{
-                                    $("#txtCustAddress").css("border","2px solid red");
-                                    $("#btnSaveOrUpdate").attr('disabled','disabled');
-                                }
-                            });
+    //------------------------Validate Customer--------------------------------------------------
+    const cusIDRegEx = /^[C](-00)[0-9]{1,4}$/;
+    const cusNameRegEx = /^[A-z0-9 ]{3,}$/;
+    const cusAddressRegEx = /^[A-z0-9 ]{3,}$/;
+    const cusSalaryRegEx = /^[0-9]+$/;
 
 
-                        }
-                    }else{
-                        $("#txtCustName").css("border","2px solid red");
-                        $("#btnSaveOrUpdate").attr('disabled','disabled');
-                    }
-                });
-
-
-            }
-        }else{
-            $("#txtCustId").css("border","2px solid red");
-            $("#btnSaveOrUpdate").attr('disabled','disabled');
+    $('#txtCusID,#txtCusName,#txtCusAddress,#txtCusSalary').on('keydown', function (eventOb) {
+        if (eventOb.key == "Tab") {
+            eventOb.preventDefault(); // stop execution of the button
         }
     });
-*/
+
+    $('#txtCusID,#txtCusName,#txtCusAddress,#txtCusSalary').on('blur', function () {
+        formValid();
+    });
+
+    $("#txtCustId").on('keyup', function (eventOb) {
+        setButton();
+        if (eventOb.key == "Enter") {
+            checkValid();
+        }
+
+        if (eventOb.key == "Control") {
+            var typedCustomerID = $("#txtCustId").val();
+            var srcCustomer = searchCustomer(typedCustomerID);
+            $("#txtCustId").val(srcCustomer.getCustomerID());
+            $("#txtCustName").val(srcCustomer.getCustomerName());
+            $("#txtCustAddress").val(srcCustomer.getCustomerAddress());
+            $("#txtCustSalary").val(srcCustomer.getCustomerSalary());
+        }
+
+    });
+
+    $("#txtCustName").on('keyup', function (eventOb) {
+        setButton();
+        if (eventOb.key == "Enter") {
+            checkValid();
+        }
+    });
+
+    $("#txtCustAddress").on('keyup', function (eventOb) {
+        setButton();
+        if (eventOb.key == "Enter") {
+            checkValid();
+        }
+    });
+
+    $("#txtCustSalary").on('keyup', function (eventOb) {
+        setButton();
+        if (eventOb.key == "Enter") {
+            checkValid();
+        }
+    });
+
+    $("#btnSaveOrUpdate").attr('disabled', true);
+
+    function Valid() {
+        var cusID = $("#txtCustId").val();
+        $("#txtCustId").css('border', '2px solid green');
+        if (cusIDRegEx.test(cusID)) {
+            var cusName = $("#txtCustName").val();
+            if (cusNameRegEx.test(cusName)) {
+                $("#txtCustName").css('border', '2px solid green');
+                var cusAddress = $("#txtCustAddress").val();
+                if (cusAddressRegEx.test(cusAddress)) {
+                    $("#txtCustAddress").css('border', '2px solid green');
+                    var cusSalary = $("#txtCustSalary").val();
+                    var resp = cusSalaryRegEx.test(cusSalary);
+                    if (resp) {
+                        $("#txtCustSalary").css('border', '2px solid green');
+                        return true;
+                    } else {
+                        $("#txtCustSalary").css('border', '2px solid red');
+                        return false;
+                    }
+                } else {
+                    $("#txtCustAddress").css('border', '2px solid red');
+                    return false;
+                }
+            } else {
+                $("#txtCustName").css('border', '2px solid red');
+                return false;
+            }
+        } else {
+            $("#txtCustId").css('border', '2px solid red');
+            return false;
+        }
+    }
+
+    function checkValid() {
+        var cusID = $("#txtCustId").val();
+        if (cusIDRegEx.test(cusID)) {
+            $("#txtCustName").focus();
+            var cusName = $("#txtCustName").val();
+            if (cusNameRegEx.test(cusName)) {
+                $("#txtCustAddress").focus();
+                var cusAddress = $("#txtCustAddress").val();
+                if (cusAddressRegEx.test(cusAddress)) {
+                    $("#txtCustSalary").focus();
+                    var cusSalary = $("#txtCustSalary").val();
+                    var resp = cusSalaryRegEx.test(cusSalary);
+                    if (resp) {
+                        let res = confirm("Do you sure to add this Customer..?");
+                        if (res) {
+                            save();
+                            clearAll();
+                        }
+                    } else {
+                        $("#txtCustSalary").focus();
+                    }
+                } else {
+                    $("#txtCustAddress").focus();
+                }
+            } else {
+                $("#txtCustName").focus();
+            }
+        } else {
+            $("#txtCustId").focus();
+        }
+    }
+
+    function setButton() {
+        let b = Valid();
+        if (b) {
+            $("#btnSaveOrUpdate").attr('disabled', false);
+        } else {
+            $("#btnSaveOrUpdate").attr('disabled', true);
+        }
+    }
 
     //----------------------Customer--------------------------------------------------------------
 
         $("#btnSaveOrUpdate").click(function () {
-            let customerID = $("#txtCustId").val();
-            let customerName = $("#txtCustName").val();
-            let customerAddress = $("#txtCustAddress").val();
-            let customerSalary = $("#txtCustSalary").val();
-
-            var customer=new CustomerDto(customerID,customerName,customerAddress,customerSalary);
-
-            saveCustomer(customer);
-            clearAll();
-            loadallCustomers();
-          //  $("#btnSaveOrUpdate").attr('disabled','disabled');
+            checkValid();
         });
         $("#searchButton").click(function () {
             var searchID = $("#search").val();
@@ -568,74 +625,151 @@
         loadallCustomers();
     });
 
+        function save() {
+            let customerID = $("#txtCustId").val();
+            let customerName = $("#txtCustName").val();
+            let customerAddress = $("#txtCustAddress").val();
+            let customerSalary = $("#txtCustSalary").val();
+
+            var customer=new CustomerDto(customerID,customerName,customerAddress,customerSalary);
+            saveCustomer(customer);
+            loadallCustomers();
+
+        }
+
     //----------------Validate Item---------------------------------------------------------------
-    let allValidators = [];
-    //Regular expression
-    var itemCodeRegEx = /^(I00-)[0-9]{3}$/;
-    var itemNameRegEx = /^[A-z ]{4,}$/;
-    var itemUnitPriceRegEx = /^[0-9]{1,}[.]?[0-9]{1,2}$/;
-    var itemQtyOnHandRegEx = /^[0-9]{1,}[.]?[0-9]{1,2}$/;
+    const itemIdRegEx = /^[I](-00)[0-9]{1,4}$/;
+    const itemNameRegEx = /^[A-z ]{4,}$/;
+    const itemPriceRegEx = /^[0-9]{1,}[.]?[0-9]{1,2}$/;
+    const itemQtyRegEx = /^[0-9]{1,}[.]?[0-9]{1,2}$/;
 
 
-    allValidators.push([itemCodeRegEx, $("#txtItemId")]);
-    allValidators.push([itemNameRegEx, $("#txtItemName")]);
-    allValidators.push([itemQtyOnHandRegEx, $("#txtItemPrice")]);
-    allValidators.push([itemUnitPriceRegEx, $("#txtItemQty")]);
-
-
-
-    $("#txtItemId,#txtItemName,#txtItemPrice,#txtItemQty").on('keyup', function (e) {
-        validateText(allValidators, e.key);
+    $('#txtItemId,#txtItemName,#txtItemPrice,#txtItemQty').on('keydown', function (eventOb) {
+        if (eventOb.key == "Tab") {
+            eventOb.preventDefault(); // stop execution of the button
+        }
     });
 
-    setDisableAllText(allValidators);
+    $("#txtItemId").on('keyup', function (eventOb) {
+        setItemButton();
+        if (eventOb.key == "Enter") {
+            checkItemValid();
+        }
 
-    function validateText(expression, key) {
-        for (let i = 0; i < expression.length; i++) {
-            var regEx = expression[i][0];
-            var input = expression[i][1];
+        if (eventOb.key == "Control") {
+            var typedItemID = $("#txtItemId").val();
+            var srcItem = searchItem(typedItemID);
+            $("#txtItemId").val(srcItem.getCustomerId());
+            $("#txtItemName").val(srcItem.getCustomerName());
+            $("#txtItemPrice").val(srcItem.getCustomerAddress());
+            $("#txtItemQty").val(srcItem.getCustomerSalary());
+        }
 
-            //check whether someone type in the text field
-            if (input.val().length >= 1) {
-                if (regEx.test(input.val())) {
-                    input.css("border", '2px solid green');
-                    if (key == "Enter") {
-                        expression[i + 1][1].attr('disabled', false);
-                        expression[i + 1][1].focus();
+    });
+
+    $("#txtItemName").on('keyup', function (eventOb) {
+        setItemButton();
+        if (eventOb.key == "Enter") {
+            checkItemValid();
+        }
+    });
+
+    $("#txtItemPrice").on('keyup', function (eventOb) {
+        setItemButton();
+        if (eventOb.key == "Enter") {
+            checkItemValid();
+        }
+    });
+
+    $("#txtItemQty").on('keyup', function (eventOb) {
+        setItemButton();
+        if (eventOb.key == "Enter") {
+            checkItemValid();
+        }
+    });
+
+    $("#btnsaveItem").attr('disabled', true);
+
+    function ItemValid() {
+        var itID = $("#txtItemId").val();
+        $("#txtItemId").css('border', '2px solid green');
+        if (itemIdRegEx.test(itID)) {
+            var itName = $("#txtItemName").val();
+            if (itemNameRegEx.test(itName)) {
+                $("#txtItemName").css('border', '2px solid green');
+                var itprice = $("#txtItemPrice").val();
+                if (itemPriceRegEx.test(itprice)) {
+                    $("#txtItemPrice").css('border', '2px solid green');
+                    var itqty = $("#txtItemQty").val();
+                    var resp = itemQtyRegEx.test(itqty);
+                    if (resp) {
+                        $("#txtItemQty").css('border', '2px solid green');
+                        return true;
+                    } else {
+                        $("#txtItemQty").css('border', '2px solid red');
+                        return false;
                     }
                 } else {
-                    input.css("border", '2px solid red');
+                    $("#txtItemPrice").css('border', '2px solid red');
+                    return false;
                 }
             } else {
-                input.css("border", '1px solid #ced4da');
+                $("#txtItemName").css('border', '2px solid red');
+                return false;
             }
+        } else {
+            $("#txtItemId").css('border', '2px solid red');
+            return false;
         }
     }
 
-    function setDisableAllText(expression) {
-        $("#btnsaveItem").attr("disabled", true);
-        for (let i = 0; i < expression.length; i++) {
-            var input = expression[i+1][1];
-            input.attr('disabled', true);
+    function checkItemValid() {
+        var itID = $("#txtItemId").val();
+        if (itemIdRegEx.test(itID)) {
+            $("#txtItemName").focus();
+            var itname = $("#txtItemName").val();
+            if (itemNameRegEx.test(itname)) {
+                $("#txtItemPrice").focus();
+                var itprice = $("#txtItemPrice").val();
+                if (itemPriceRegEx.test(itprice)) {
+                    $("#txtItemQty").focus();
+                    var itqty = $("#txtItemQty").val();
+                    var resp = itemQtyRegEx.test(itqty);
+                    if (resp) {
+                        let res = confirm("Do you sure to add this Item..?");
+                        if (res) {
+                            saveitem();
+                            clearAllItems();
+                        }
+                    } else {
+                        $("#txtItemQty").focus();
+                    }
+                } else {
+                    $("#txtItemPrice").focus();
+                }
+            } else {
+                $("#txtItemName").focus();
+            }
+        } else {
+            $("#txtItemId").focus();
         }
-
     }
+
+    function setItemButton() {
+        let b = ItemValid();
+        if (b) {
+            $("#btnsaveItem").attr('disabled', false);
+        } else {
+            $("#btnsaveItem").attr('disabled', true);
+        }
+    }
+
 
 
     //---------------Item----------------------------------------------------------------------
 
             $("#btnsaveItem").click(function () {
-                let itemId = $("#txtItemId").val();
-                let itemName = $("#txtItemName").val();
-                let itemQty = $("#txtItemQty").val();
-                let itemPrice = $("#txtItemPrice").val();
-
-                var item=new ItemDto(itemId,itemName,itemPrice,itemQty);
-
-                saveItem(item);
-                clearAllItems();
-                loadallItems();
-              //  $("#btnsaveItem").attr('disabled','disabled');
+                checkItemValid();
             });
             $("#btnsearchItem").click(function () {
                 var searchID = $("#itemsearch").val();
@@ -675,34 +809,391 @@
                 loadallItems();
             });
 
+            function saveitem(){
+                let itemId = $("#txtItemId").val();
+                let itemName = $("#txtItemName").val();
+                let itemQty = $("#txtItemQty").val();
+                let itemPrice = $("#txtItemPrice").val();
+
+                var item=new ItemDto(itemId,itemName,itemPrice,itemQty);
+
+                saveItem(item);
+                loadallItems();
+            }
+
     //-----------Validate Orders------------------------------------------------------------
 
+    const orderIdRegEx=/^[O](-00)[0-9]{1,4}$/;
+    const orderDateRegEx=/^(20)[0-9]{2}[-][0-9]{2}[-][0-9]{2}$/;
+    const orderqtyRegEx=/^[0-9]{1,}[.]?[0-9]{1,2}$/;
+    const pay_Dis_BalRegEx=/^[0-9]{1,}[.]?[0-9]{1,2}$/;
 
 
-
-    //----------------Orders-----------------------------------------------------------------
-    $("#btnEnterCustomer").click(function () {
-        var searchID = $("#txtC_Id").val();
-        var response = searchCustomer(searchID);
-        if (response) {
-            $("#txtC_Name").val(response.name);
-            $("#txtC_Address").val(response.address);
-            $("#txtC_Salary").val(response.salary);
-        }else{
-            clearAll();
-            alert("Wrong Customer Id.");
+    $('#txtO_Id,#txtO_Date,#txtC_Id,#txtC_Name,#txtC_Address,#txtC_Salary,#txtI_Id,#txtI_Name,#txtI_Price,#txtI_Qoh,#txtI_Qty,#txtPayment,#txtDiscount,#txtBalance').on('keydown', function (eventOb) {
+        if (eventOb.key == "Tab") {
+            eventOb.preventDefault(); // stop execution of the button
         }
     });
-    $("#btnEnterItem").click(function () {
-        var searchID = $("#txtI_Id").val();
-        var response = searchItem(searchID);
-        if (response) {
-            $("#txtI_Name").val(response.name);
-            $("#txtI_Price").val(response.price);
-            $("#txtI_Qoh").val(response.qty);
-        }else{
-            clearAll();
-            alert("Wrong Item Id.");
+
+/*
+    $('#txtO_Id,#txtO_Date,#txtC_Id,#txtC_Name,#txtC_Address,#txtC_Salary,#txtI_Id,#txtI_Name,#txtI_Price,#txtI_Qoh,#txtI_Qty,#txtPayment,#txtDiscount,#txtBalance').on('blur', function () {
+        formValid();
+    });
+*/
+
+
+    $("#txtO_Id").on('keyup', function (eventOb) {
+        setorderButton();
+        if (eventOb.key == "Enter") {
+            checkorderValid();
+        }
+
+    });
+
+    $("#txtO_Date").on('keyup', function (eventOb) {
+        setorderButton();
+        if (eventOb.key == "Enter") {
+            checkorderValid();
+        }
+    });
+
+    $("#txtC_Id").on('keyup', function (eventOb) {
+        setorderButton();
+        if (eventOb.key == "Enter") {
+            checkorderValid();
+        }
+
+        /*if (eventOb.key == "Control") {
+            var typedCustomerID = $("#txtCustId").val();
+            var srcCustomer = searchCustomer(typedCustomerID);
+            $("#txtCustId").val(srcCustomer.getCustomerID());
+            $("#txtCustName").val(srcCustomer.getCustomerName());
+            $("#txtCustAddress").val(srcCustomer.getCustomerAddress());
+            $("#txtCustSalary").val(srcCustomer.getCustomerSalary());
+        }*/
+
+    });
+
+    $("#txtC_Name").on('keyup', function (eventOb) {
+        setorderButton();
+        if (eventOb.key == "Enter") {
+            checkorderValid();
+        }
+    });
+
+    $("#txtC_Address").on('keyup', function (eventOb) {
+        setorderButton();
+        if (eventOb.key == "Enter") {
+            checkorderValid();
+        }
+    });
+
+    $("#txtC_Salary").on('keyup', function (eventOb) {
+        setorderButton();
+        if (eventOb.key == "Enter") {
+            checkorderValid();
+        }
+    });
+
+    $("#txtI_Id").on('keyup', function (eventOb) {
+        setorderButton();
+        if (eventOb.key == "Enter") {
+            checkorderValid();
+        }
+    });
+
+    $("#txtI_Name").on('keyup', function (eventOb) {
+        setorderButton();
+        if (eventOb.key == "Enter") {
+            checkorderValid();
+        }
+    });
+
+    $("#txtI_Price").on('keyup', function (eventOb) {
+        setorderButton();
+        if (eventOb.key == "Enter") {
+            checkorderValid();
+        }
+    });
+
+    $("#txtI_Qoh").on('keyup', function (eventOb) {
+        setorderButton();
+        if (eventOb.key == "Enter") {
+            checkorderValid();
+        }
+    });
+
+    $("#txtI_Qty").on('keyup', function (eventOb) {
+        setorderButton();
+        if (eventOb.key == "Enter") {
+            checkorderValid();
+        }
+    });
+
+    $("#txtPayment").on('keyup', function (eventOb) {
+        setorderButton();
+        if (eventOb.key == "Enter") {
+            checkorderValid();
+        }
+    });
+
+    $("#txtDiscount").on('keyup', function (eventOb) {
+        setorderButton();
+        if (eventOb.key == "Enter") {
+            checkorderValid();
+        }
+    });
+
+    $("#txtBalance").on('keyup', function (eventOb) {
+        setorderButton();
+        if (eventOb.key == "Enter") {
+            checkorderValid();
+        }
+    });
+
+
+    $("#btnPlaceOrder").attr('disabled', true);
+
+    function orderValid() {
+
+
+        var oID = $("#txtO_Id").val();
+        $("#txtO_Id").css('border', '2px solid green');
+        if (orderIdRegEx.test(oID)) {
+            var oDate = $("#txtO_Date").val();
+            if (orderDateRegEx.test(oDate)) {
+                $("#txtO_Date").css('border', '2px solid green');
+                var cId = $("#txtC_Id").val();
+                if (cusIDRegEx.test(cId)) {
+                    $("#txtC_Id").css('border', '2px solid green');
+                    var cname = $("#txtC_Name").val();
+                    if (cusNameRegEx.test(cname)) {
+                        $("#txtC_Name").css('border', '2px solid green');
+                        var cAdd = $("#txtC_Address").val();
+                        if (cusAddressRegEx.test(cAdd)) {
+                            $("#txtC_Address").css('border', '2px solid green');
+                            var cSal = $("#txtC_Salary").val();
+                            if (cusSalaryRegEx.test(cSal)) {
+                                $("#txtC_Salary").css('border', '2px solid green');
+                                var iId = $("#txtI_Id").val();
+                                if (itemIdRegEx.test(iId)) {
+                                    $("#txtI_Id").css('border', '2px solid green');
+                                    var iname = $("#txtI_Name").val();
+                                    if (itemNameRegEx.test(iname)) {
+                                        $("#txtI_Name").css('border', '2px solid green');
+                                        var iprice = $("#txtI_Price").val();
+                                        if (itemPriceRegEx.test(iprice)) {
+                                            $("#txtI_Price").css('border', '2px solid green');
+                                            var iqoh = $("#txtI_Qoh").val();
+                                            if (itemQtyRegEx.test(iqoh)) {
+                                                $("#txtI_Qoh").css('border', '2px solid green');
+                                                var iqty = $("#txtI_Qty").val();
+                                                if (orderqtyRegEx.test(iqty)) {
+                                                    $("#txtI_Qty").css('border', '2px solid green');
+                                                    var opay = $("#txtPayment").val();
+                                                    if (pay_Dis_BalRegEx.test(opay)) {
+                                                        $("#txtPayment").css('border', '2px solid green');
+                                                        var oDis = $("#txtDiscount").val();
+                                                        if (pay_Dis_BalRegEx.test(oDis)) {
+                                                            $("#txtDiscount").css('border', '2px solid green');
+                                                            var obal = $("#txtBalance").val();
+                                                            if (pay_Dis_BalRegEx.test(obal)) {
+                                                                $("#txtBalance").css('border', '2px solid green');
+                                                            } else {
+                                                                $("#txtBalance").css('border', '2px solid red');
+                                                                return false;
+                                                            }
+                                                        } else {
+                                                            $("#txtDiscount").css('border', '2px solid red');
+                                                            return false;
+                                                        }
+                                                    } else {
+                                                        $("#txtPayment").css('border', '2px solid red');
+                                                        return false;
+                                                    }
+                                                } else {
+                                                    $("#txtI_Qty").css('border', '2px solid red');
+                                                    return false;
+                                                }
+
+                                            } else {
+                                                $("#txtI_Qoh").css('border', '2px solid red');
+                                                return false;
+                                            }
+
+                                        } else {
+                                            $("#txtI_Price").css('border', '2px solid red');
+                                            return false;
+                                        }
+                                    } else {
+                                        $("#txtI_Name").css('border', '2px solid red');
+                                        return false;
+                                    }
+                                } else {
+                                    $("#txtI_Id").css('border', '2px solid red');
+                                    return false;
+                                }
+                            } else {
+                                $("#txtC_Salary").css('border', '2px solid red');
+                                return false;
+                            }
+                        } else {
+                            $("#txtC_Address").css('border', '2px solid red');
+                            return false;
+                        }
+                    } else {
+                        $("#txtC_Name").css('border', '2px solid red');
+                        return false;
+                    }
+                } else {
+                    $("#txtC_Id").css('border', '2px solid red');
+                    return false;
+                }
+            } else {
+                $("#txtO_Date").css('border', '2px solid red');
+                return false;
+            }
+        } else {
+            $("#txtO_Id").css('border', '2px solid red');
+            return false;
+        }
+    }
+
+    function checkorderValid() {
+
+        var oID = $("#txtO_Id").val();
+        if (orderIdRegEx.test(oID)) {
+            $("#txtO_Date").focus();
+            var oDate = $("#txtO_Date").val();
+            if (orderDateRegEx.test(oDate)) {
+                $("#txtC_Id").focus();
+                var cId = $("#txtC_Id").val();
+                if (cusIDRegEx.test(cId)) {
+                    $("#txtC_Name").focus();
+
+                    var cname = $("#txtC_Name").val();
+                    if (cusNameRegEx.test(cname)) {
+                        $("#txtC_Address").focus();
+                        var cAdd = $("#txtC_Address").val();
+                        if (cusAddressRegEx.test(cAdd)) {
+                            $("#txtC_Salary").focus();
+                            var cSal = $("#txtC_Salary").val();
+                            if (cusSalaryRegEx.test(cSal)) {
+
+                                $("#txtI_Id").focus();
+                                var iId = $("#txtI_Id").val();
+                                $("#btnEnterItem").focus();
+                                if (itemIdRegEx.test(iId)) {
+                                    $("#btnEnterItem").focus();
+                                    var iname = $("#txtI_Name").val();
+                                    if (itemNameRegEx.test(iname)) {
+                                        $("#txtI_Price").focus();
+                                        var iprice = $("#txtI_Price").val();
+                                        if (itemPriceRegEx.test(iprice)) {
+                                            $("#txtI_Qoh").focus();
+                                            var iqoh = $("#txtI_Qoh").val();
+                                            if (itemQtyRegEx.test(iqoh)) {
+                                                $("#txtI_Qty").focus();
+                                                var iqty = $("#txtI_Qty").val();
+                                                if (orderqtyRegEx.test(iqty)) {
+                                                    $("#txtPayment").focus();
+                                                    var opay = $("#txtPayment").val();
+                                                    if (pay_Dis_BalRegEx.test(opay)) {
+                                                        $("#txtDiscount").focus();
+                                                        var oDis = $("#txtDiscount").val();
+                                                        if (pay_Dis_BalRegEx.test(oDis)) {
+                                                            $("#txtBalance").focus();
+                                                            var obal = $("#txtBalance").val();
+                                                            if (pay_Dis_BalRegEx.test(obal)) {
+                                                                let res = confirm("Do you sure to Place this Order..?");
+                                                                if (res) {
+                                                                    addorder();
+                                                                    clearAll();
+                                                                }
+                                                            } else {
+                                                                $("#txtBalance").focus();
+                                                            }
+                                                        } else {
+                                                            $("#txtDiscount").focus();
+                                                        }
+                                                    } else {
+                                                        $("#txtPayment").focus();
+                                                    }
+                                                } else {
+                                                    $("#txtI_Qty").focus();
+                                                }
+                                            } else {
+                                                $("#txtI_Qoh").focus();
+                                            }
+                                        } else {
+                                            $("#txtI_Price").focus();
+                                        }
+                                    } else {
+                                        $("#txtI_Name").focus();
+                                    }
+                                } else {
+                                    $("#txtI_Id").focus();
+                                }
+
+                            } else {
+                                $("#txtC_Salary").focus();
+                            }
+
+                        } else {
+                            $("#txtC_Address").focus();
+                        }
+                    } else {
+                        $("#txtC_Name").focus();
+                    }
+                } else {
+                    $("#txtC_Id").focus();
+                }
+            } else {
+                $("#txtO_Date").focus();
+            }
+        } else {
+            $("#txtO_Id").focus();
+        }
+
+    }
+
+    function setorderButton() {
+        let b = orderValid();
+        if (b) {
+            $("#btnPlaceOrder").attr('disabled', false);
+        } else {
+            $("#btnPlaceOrder").attr('disabled', true);
+        }
+    }
+
+    //----------------Orders-----------------------------------------------------------------
+
+    $("#txtC_Id").on('keyup', function (eventOb) {
+        if (eventOb.key == "Enter") {
+            var searchID = $("#txtC_Id").val();
+            var response = searchCustomer(searchID);
+            if (response) {
+                $("#txtC_Name").val(response.name);
+                $("#txtC_Address").val(response.address);
+                $("#txtC_Salary").val(response.salary);
+            }else{
+                clearAll();
+                alert("Wrong Customer Id.");
+            }
+        }
+    });
+    $("#txtI_Id").on('keyup', function (eventOb) {
+        if (eventOb.key == "Enter") {
+            var searchID = $("#txtI_Id").val();
+            var response = searchItem(searchID);
+            if (response) {
+                $("#txtI_Name").val(response.name);
+                $("#txtI_Price").val(response.price);
+                $("#txtI_Qoh").val(response.qty);
+            }else{
+                clearAll();
+                alert("Wrong Item Id.");
+            }
         }
     });
     let total=0;
@@ -734,9 +1225,12 @@
         $("#txtBalance").val(payment-price);
     });
     $("#btnPlaceOrder").click(function () {
+        checkorderValid();
+    });
+
+    function addorder() {
         let orderId=$("#txtO_Id").val();
         let date=$("#txtO_Date")
-        let itemId = $("#txtI_Id").val();
         let custid=$("#txtC_Id").val();
 
         var order=new OrderDto(orderId,date,custid,total);
@@ -745,7 +1239,10 @@
         AddOrder(itemList);
 
         itemList.splice(0,itemList.length);
-    });
+        clearAll();
+        $("#OrderTable").remove();
+    }
+
 
 
 </script>

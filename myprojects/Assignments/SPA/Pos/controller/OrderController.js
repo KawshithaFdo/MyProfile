@@ -9,3 +9,6 @@ function placeOrder(Order) {
     dbOrder.push(Order);
     alert("Order Placed Successfully");
 }
+function clearAll() {
+    $('#txtPayment,#txtDiscount,#txtBalance').val("");
+}
