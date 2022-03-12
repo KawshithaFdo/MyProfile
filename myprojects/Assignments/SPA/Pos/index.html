@@ -1210,7 +1210,7 @@
         $("#lblTotal").text(total);
     });
     $("#btnClearTable").click(function () {
-        $("#OrderTable").remove();
+        $("#OrderTable").empty();
         $("#lblTotal").text("");
 
     });
@@ -1226,6 +1226,7 @@
     $("#btnSearchOrder").click(function () {
         var searchID = $("#txtSearchOrder").val();
         searchOrderItem(searchID);
+        $("#txtSearchOrder").val("");
     });
 
 
@@ -1243,7 +1244,7 @@
         clearAll();
         clearor();
         $("#txtBalance").val("");
-        $("#lblTotal").val("");
+        $("#lblTotal").text("");
 
 
         $("#OrderTable").empty();
