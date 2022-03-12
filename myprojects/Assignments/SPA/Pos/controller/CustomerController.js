@@ -36,6 +36,3 @@ function updateCustomer(cust){
     }
 
 }
-function clearAll() {
-    $('#txtCustId,#txtCustName,#txtCustAddress,#txtCustSalary,#search').val("");
-}

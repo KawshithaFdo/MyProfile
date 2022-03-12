@@ -264,6 +264,19 @@
                     </div>
 
                 </div>
+                <hr class="bg-dark">
+                <div class="row">
+                    <div class="col">
+                        <caption>Search Order:</caption>
+                        <form>
+                            <input id="txtSearchOrder" class="form-control " type="text">
+                        </form>
+                    </div>
+                    <div class="col">
+                        <button id="btnSearchOrder" class="btn btn-primary mt-4">Search Order</button>
+                    </div>
+
+                </div>
 
             </section>
         </div>
@@ -454,7 +467,7 @@
 
     $('#txtCusID,#txtCusName,#txtCusAddress,#txtCusSalary').on('keydown', function (eventOb) {
         if (eventOb.key == "Tab") {
-            eventOb.preventDefault(); // stop execution of the button
+            eventOb.preventDefault();
         }
     });
 
@@ -551,7 +564,6 @@
                         let res = confirm("Do you sure to add this Customer..?");
                         if (res) {
                             save();
-                            clearAll();
                         }
                     } else {
                         $("#txtCustSalary").focus();
@@ -595,8 +607,8 @@
             }
         });
         $("#clearCustomer").click(function () {
-        clearAll();
-    });
+            clearAll();
+        });
         $("#ClearSearch").click(function () {
             clearAll();
         });
@@ -615,8 +627,8 @@
             var cust=new CustomerDto(customerID,customerName,customerAddress,customerSalary);
 
             updateCustomer(cust);
-        clearAll();
-        loadallCustomers();
+            clearAll();
+            loadallCustomers();
     });
 
         function save() {
@@ -628,8 +640,13 @@
             var customer=new CustomerDto(customerID,customerName,customerAddress,customerSalary);
             saveCustomer(customer);
             loadallCustomers();
+            clearAll();
 
         }
+
+    function clearAll() {
+        $('#txtCustId,#txtCustName,#txtCustAddress,#txtCustSalary,#search').val("");
+    }
 
     //----------------Validate Item---------------------------------------------------------------
     const itemIdRegEx = /^[I](-00)[0-9]{1,4}$/;
@@ -828,8 +845,6 @@
             eventOb.preventDefault();
         }
     });
-
-
 
     $("#txtO_Id").on('keyup', function (eventOb) {
         setorderButton();
@@ -1088,7 +1103,8 @@
                                                                 let res = confirm("Do you sure to Place this Order..?");
                                                                 if (res) {
                                                                     addorder();
-                                                                    clearAll();
+                                                                    clearor();
+                                                                    clear();
                                                                 }
                                                             } else {
                                                                 $("#txtBalance").focus();
@@ -1207,6 +1223,11 @@
     $("#btnPlaceOrder").click(function () {
         checkorderValid();
     });
+    $("#btnSearchOrder").click(function () {
+        var searchID = $("#txtSearchOrder").val();
+        searchOrderItem(searchID);
+    });
+
 
     function addorder() {
         let orderId=$("#txtO_Id").val();
@@ -1217,11 +1238,15 @@
         placeOrder(order);
         updateqty(itemList);
         AddOrder(itemList);
-
+        total=0;
         itemList.splice(0,itemList.length);
         clearAll();
-        clear();
-        $("#OrderTable").remove();
+        clearor();
+        $("#txtBalance").val("");
+        $("#lblTotal").val("");
+
+
+        $("#OrderTable").empty();
     }
 
 
